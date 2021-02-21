@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script  src="script.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eShop</title>
     <link rel="stylesheet" href="style.css">
 
@@ -12,9 +12,10 @@
 
     <header>
         <div class="wrap wrap_header">
+            <div class="basket"></div>
             <div class="cart-button-block">
                 <button class="cart-button" type="button">Корзина</button>
-                
+                <div class="cart-button-counter"><p id="basket_count">0</p></div>
             </div>
         </div>
     </header>
@@ -24,6 +25,7 @@
         </div>
     </main>
     
-    
+   <!---   <script src="script.js"></script>--> 
+    <script src="fastscript.js"></script>
 </body>
 </html>
