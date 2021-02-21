@@ -30,7 +30,7 @@
 .goods-list{
     justify-content: space-between;
     display: flex;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 .goods-item{
     width: 200px;

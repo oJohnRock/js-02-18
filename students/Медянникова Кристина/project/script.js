@@ -1,10 +1,10 @@
 'use strict';
 
 const goods = [
-    { title: 'Mango People T-shirt', price: 150 },
-    { title: 'Mango People T-shirt', price: 150 },
-    { title: 'Mango People T-shirt', price: 150 },
-  ];
+  { title: 'Mango People T-shirt', price: 150 },
+  { title: 'Mango People T-shirt', price: 150 },
+  { title: 'Mango People T-shirt', price: 150 },
+];
 
   
 const renderGoodsItem = (title, price) => {
