@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 01</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/v4-shims.min.css"
+        integrity="sha512-NfhLGuxy6G12XHj7/bvm0RC3jmR25RdpImn8P19aIMmN5pndO0fvIg78ihN2WIJtVRs+AYVrnYF4AipVikGPLg=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/solid.min.css"
+        integrity="sha512-xIEmv/u9DeZZRfvRS06QVP2C97Hs5i0ePXDooLa5ZPla3jOgPT/w6CzoSMPuRiumP7A/xhnUBxRmgWWwU26ZeQ=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/fontawesome.min.css"
+        integrity="sha512-shT5e46zNSD6lt4dlJHb+7LoUko9QZXTGlmWWx0qjI9UhQrElRb+Q5DM7SVte9G9ZNmovz2qIaV7IWv0xQkBkw=="
+        crossorigin="anonymous" />
+    <script type="text/javascript" src="js/helpers.js"></script>
+    <script type="text/javascript" src="js/cart.js"></script>
+    <script type="text/javascript" src="js/catalog.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    <script src="script.js" defer></script>
+    <script type="text/javascript">
+        "use strict";
+        var prodCatalog2Render = [1, 2, 3, 4, 5, 6, 7, 8];
+        var cart2Render = [
+            {
+                id: 1,
+                amount: 1
+            },
+            {
+                id: 4,
+                amount: 2
+            }
+        ];
+        var cart, catalog;
+        document.addEventListener("DOMContentLoaded", pageInit);
+
+    </script>
+</head>
+
+<body>
+    <section>
+        <hr>
+        <h1>Задание №1</h1>
+        <p>Использовал дизайн от прошлого курса, адаптировав задание под имеющиеся материалы</p>
+        <header class="header">
+            <section class="header-top-wrap wrap">
+                <section class="cart">
+                    <div id="cartSmall" class="btn-cart__wrap">
+                        <a href="Shopping%20Cart.html" class="btn-cart"><img src="img/cart_black.png" alt="">
+                        </a>
+                        <div class="btn-cart__count">0</div>
+                        <div class="btn-cart__ddc">
+                            <ul class="btn-cart__ddc-list">
+                            </ul>
+                            <div class="btn-cart__ddc-total">
+                                <div class="total-grand"><span>TOTAL</span><span class="total-grand-summ">$0.00</span>
+                                </div>
+                                <div class="btn-sqr_bw"><a href="Checkout.html" class="btn-sqr_bw__link"><span
+                                            class="btn-sqr_bw__text">Checkout</span></a>
+                                </div>
+                                <div class="btn-sqr_dl"><a href="Shopping%20Cart.html" class="btn-sqr_dl__link"><span
+                                            class="btn-sqr_dl__text">Go to cart</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <div class="header-hl"></div>
+
+        </header>
+        <section class="products">
+            <div class="wrap products-wrap">
+                <ul id="catalog" class="products-grid_list">
+                </ul>
+            </div>
+        </section>
+    </section>
+
+    <section>
+        <hr>
+        <h1>Задание №2,3</h1>
+        <p>Аргументы по умолчанию добавить не сложно, хотя в данном контексте они не несут особой пользы<br>
+            Как-то упростить запись не придумал.<br>
+            Запятые появлялись из-за преобразования массива в строку, а JS в таком случае разделяет элементы массива
+            запятыми. Решается с помощью явного объединения-преобразования типа join или reduce</p>
+        <section>
+            <div class="logo">eShop</div>
+            <button class="card-button">Корзина</button>
+        </section>
+        <section>
+            <div class="goods"></div>
+        </section>
+    </section>
+</body>
+
+</html>
