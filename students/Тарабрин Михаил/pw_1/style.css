@@ -3,14 +3,6 @@
     padding: 0;
 }
 
-/*.container {*/
-/*    width: 1140px;*/
-/*    margin: 0 auto;*/
-/*    padding: 0;*/
-/*    box-sizing: border-box;*/
-/*    align-items: baseline;*/
-/*}*/
-
 .goods-list {
     display: flex;
     justify-content: center;
