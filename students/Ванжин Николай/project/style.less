@@ -1,12 +1,16 @@
-
 /*variables*/
 @width: 1140px;
-@mainfont: sans-serif;;
+@mainfont: sans-serif;
+;
 @color-blue: cadetblue;
 
 body {
     font-family: @mainfont;
+    max-width: @width;
+    margin: 0 auto;
+
 }
+
 header {
     display: flex;
     justify-content: space-between;
@@ -15,11 +19,13 @@ header {
     padding: 10px 10px;
     font-family: sans-serif;
     border-radius: 10px;
+
     .logo {
         font-size: 20px;
         font-weight: bold;
         color: cadetblue;
     }
+
     .card-button {
         min-height: 40px;
         min-width: 100px;
@@ -30,30 +36,47 @@ header {
         border-radius: 10px;
     }
 }
+
 main {
     margin: 10px;
     display: flex;
     flex-direction: column;
+
     .goods {
+
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
-        .item{
-            background-color:@color-blue; 
+
+        .item {
+            background-color: @color-blue;
             padding: 10px;
             min-height: 10%;
-            min-width: 10%;
+            min-width: 30%;
+            max-width: 45%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            color:cornsilk;
+            color: cornsilk;
             border-radius: 5px;
-            
-            h2{
+            margin-bottom: 10px;
+
+            img {
+                display: flex;
+                width: 100px;
+                height: 100px;
+                max-width: 70%;
+                max-height: 70%;
+            }
+
+            h2 {
                 margin: 10px;
             }
-            p{margin: 10px;}
+
+            p {
+                margin: 10px;
+            }
         }
-        
+
     }
 }
