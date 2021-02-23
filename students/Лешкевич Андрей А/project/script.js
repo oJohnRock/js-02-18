@@ -5,17 +5,15 @@ const goods = [
     { title: 'Ноутбук', price: 35000 },
 ];
 
-const getGoodsLayout = (title = "didn't set", price = 0) => {
-    return `
+const getGoodsLayout = (title = "didn't set", price = 0) => `
         <div class="item">
             <h2>${title}</h2>
             <p>${price}</p>
         </div>
     `;
-}
 
 const renderGoods = (list) => {
-    //Transforme reduce:
+    //Transform reduce:
     //const goodsString = list.map(element => getGoodsLayout(element.title, element.price)).reduce((acc, str) => acc + str);
 
     //Transform join
