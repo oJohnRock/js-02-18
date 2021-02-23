@@ -1,27 +1,34 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.goods-list {
-    display: flex;
-    justify-content: center;
-    padding: 45px 45px;
-    margin-top: 30px;
+.txt {
+    margin-top: 15px;
+    font-family: 'Tangerine', serif;
+    font-size: 30px;
     text-align: center;
-    font-family: 'Tangerine', serif;
-    font-size: 40px;
 }
 
-.img {
-    height: 350px;
-}
+/** {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
 
-.shop-name {
-    font-family: 'Tangerine', serif;
-    font-size: 40px;
-}
+/*.goods-list {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    padding: 45px 45px;*/
+/*    margin-top: 30px;*/
+/*    text-align: center;*/
+/*    font-family: 'Tangerine', serif;*/
+/*    font-size: 40px;*/
+/*}*/
 
-.text {
-    margin-top: 20px;
-}
+/*.img {*/
+/*    height: 350px;*/
+/*}*/
+
+/*.shop-name {*/
+/*    font-family: 'Tangerine', serif;*/
+/*    font-size: 40px;*/
+/*}*/
+
+/*.text {*/
+/*    margin-top: 20px;*/
+/*}*/
