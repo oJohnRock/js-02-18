@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+$maxPageWidth: 1140px;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: flex;
+}
+
+body {
+    margin: auto;
+    font-family: "Roboto", "Courier New", Courier, monospace;
+    font-size: 16px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f1e7;
+    padding: 10px 10px;
+
+    .logo {
+        font-size: 20px;
+        font-weight: bold;
+        color: #000;
+    }
+
+    .cart-button {
+        min-height: 40px;
+        min-width: 100px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #e89f71;
+        border: none;
+        border-radius: 10px;
+    }
+}
+
+.showcase {
+    // margin: auto;
+    max-width: $maxPageWidth;
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", "Courier New", Courier, monospace;
+    font-size: 16px;
+}
+
+main {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .showcase {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        flex-direction: row;
+
+        .showcase__product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            min-height: 10%;
+            min-width: 15%;
+            max-width: 15%;
+            background-color: #ececec;
+            color: black;
+            border-radius: 10px;
+
+            img {
+                margin: 5px;
+                display: flex;
+                width: 120px;
+                height: 120px;
+                max-width: 70%;
+                max-height: 70%;
+            }
+
+            h2 {
+                margin: 5px;
+            }
+
+            p {
+                margin: 5px;
+            }
+
+            button {
+                margin: 10px;
+                margin-bottom: 0px;
+                padding: 7px;
+                border-radius: 10px;
+                border: none;
+                color: #fff;
+                background-color: #e89f71;
+                font-weight: bold;
+                font-size: 14px;
+                cursor: pointer;
+            }
+        }
+    }
+}
