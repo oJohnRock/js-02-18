@@ -42,28 +42,31 @@ header .cart-button {
   border-radius: 10px;
 }
 
-.showcase {
-  max-width: 1140px;
-  display: flex;
-  flex-direction: column;
-  font-family: "Roboto", "Courier New", Courier, monospace;
-  font-size: 16px;
-}
-
 main {
   margin: 10px;
   display: flex;
   flex-direction: column;
 }
 
-main .showcase {
+main .app__container {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1200px;
+  border: 2px solid;
+}
+
+main .app__container .showcase {
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
   flex-direction: row;
+  font-family: "Roboto", "Courier New", Courier, monospace;
+  font-size: 16px;
 }
 
-main .showcase .showcase__product {
+main .app__container .showcase .showcase__product {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,15 +75,15 @@ main .showcase .showcase__product {
   margin-right: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
-  min-height: 10%;
-  min-width: 15%;
-  max-width: 15%;
+  min-height: 250px;
+  max-height: 300px;
+  width: 150px;
   background-color: #ececec;
   color: black;
   border-radius: 10px;
 }
 
-main .showcase .showcase__product img {
+main .app__container .showcase .showcase__product img {
   margin: 5px;
   display: flex;
   width: 120px;
@@ -89,15 +92,15 @@ main .showcase .showcase__product img {
   max-height: 70%;
 }
 
-main .showcase .showcase__product h2 {
+main .app__container .showcase .showcase__product h2 {
   margin: 5px;
 }
 
-main .showcase .showcase__product p {
+main .app__container .showcase .showcase__product p {
   margin: 5px;
 }
 
-main .showcase .showcase__product button {
+main .app__container .showcase .showcase__product button {
   margin: 10px;
   margin-bottom: 0px;
   padding: 7px;
@@ -108,4 +111,48 @@ main .showcase .showcase__product button {
   font-weight: bold;
   font-size: 14px;
   cursor: pointer;
+}
+
+main .app__container .panelcart {
+  border: 2px solid;
+  background-color: #ececec;
+  width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  flex-direction: row;
+}
+
+main .app__container .panelcart .panelcart__product {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 90px;
+  background-color: #fff;
+  color: black;
+}
+
+main .app__container .panelcart .panelcart__product img {
+  margin: 5px;
+  display: flex;
+  width: 90px;
+  height: 90px;
+  max-width: 20%;
+  max-height: 20%;
+}
+
+main .app__container .panelcart .panelcart__product .panelcart__product-details {
+  display: flex;
+  flex-direction: column;
+}
+
+main .app__container .panelcart .panelcart__product .panelcart__product-details .panelcart__product-title {
+  margin: 5px;
+}
+
+main .app__container .panelcart .panelcart__product .panelcart__product-details .panelcart__product-price {
+  margin: 5px;
 }
