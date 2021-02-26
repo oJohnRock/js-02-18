@@ -1,6 +1,6 @@
 'use strict';
 
-class GoodsItem {   // товар   big  little    Сheese    Salad     Potato  
+class HamburgerItem {   // товар   big  little    Сheese    Salad     Potato  
     constructor(size = "little", stuffing = "cheese"){
         this.stuffing = stuffing;
         this.size = size;
@@ -49,7 +49,7 @@ class GoodsItem {   // товар   big  little    Сheese    Salad     Potato
     
     let priсe = size[this.size] + stuffing[this.stuffing];
     this.topping.forEach(element => { priсe += topping[element] }); 
-    console.log(priсe);
+    console.log(`стоимость: ${priсe}`);
     return priсe;
     }
     
@@ -71,17 +71,19 @@ class GoodsItem {   // товар   big  little    Сheese    Salad     Potato
         let calories = size[this.size] + stuffing[this.stuffing];
         this.topping.forEach(element => { calories += topping[element] }); 
 
-        console.log(calories);
+        console.log(`калорий:${calories}`);
         return calories;
     }
 }
 // товар   big  little ,   cheese    salad     potato,  seasoning  mayonnaise
-const hamburgers = new GoodsItem();
-hamburgers.getSize();
-hamburgers.addTopping("seasoning");
-hamburgers.addTopping("mayonnaise");
-hamburgers.calculatePrice();
-hamburgers.calculateCalories();
-hamburgers.removeTopping("seasoning");
-hamburgers.calculatePrice();
-hamburgers.calculateCalories();
+function fastFood() {
+    const hamburgers = new HamburgerItem();
+    hamburgers.getSize();
+    hamburgers.addTopping("seasoning");
+    hamburgers.addTopping("mayonnaise");
+    hamburgers.calculatePrice();
+    hamburgers.calculateCalories();
+    hamburgers.removeTopping("seasoning");
+    hamburgers.calculatePrice();
+    hamburgers.calculateCalories();
+}
