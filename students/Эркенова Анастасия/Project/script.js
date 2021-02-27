@@ -86,11 +86,8 @@ class CartItem {
     dec() {
         this.count--
     }
-    MainTemplate() {
-        // рендер в общий список
-    }
-    BasketTemplate() {
-        // рендер в список корзины
+    render() {
+
     }
     inCartButton() {
         // кнопка добавления в корзину
