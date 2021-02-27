@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    background: #bbb3b3;
+    height: 100px;
+    width: 100%;
+    padding-top: 25px;
+    box-sizing: border-box;
+}
+header .logo {
+    margin-left: 15px;
+}
+header .card-button {
+    margin-right: 15px;
+    height: 25px;
+
+}
+.goods {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 5px;
+}
+.item {
+    height: 200px;
+    width: 150px;
+    border: 1px solid #bbb3b3;
+    text-align: center;
+}
