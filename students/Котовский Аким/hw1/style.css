@@ -1,0 +1,28 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+    background-color: rgb(86, 86, 161);
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    background: rgb(153, 158, 255);
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 200;
+    letter-spacing: 2px;
+    transition: 0.2s;
+}
+
+button:hover {
+    color: rgb(153, 158, 255);
+    background-color: rgb(0, 0, 0);
+}
+
+hr {
+    opacity: 0.3;
+    width: 400px;
+    margin-left: 0;
+}
