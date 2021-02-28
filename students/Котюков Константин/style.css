@@ -1,0 +1,8 @@
+body {
+    background-color: #0C0F11;
+    font-family: Roboto, sans-serif;    
+}
+
+main {
+   display: flex; 
+}

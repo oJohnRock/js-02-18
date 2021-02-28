@@ -15,9 +15,9 @@ const getGoodsLayout = (title, price) => {
 }
     
 
-const renderGoods = (list) => {
-    const goodString = list.map( Element => getGoodsLayout(element.title, element.price));
-    document.querySelector('.goods').innerHTML = goodString;
+const renderGoods = (list = []) => {
+    const goodString = list.map( element => getGoodsLayout(element.title, element.price));
+    document.querySelector('.goods').innerHTML = goodString.join('');
 }
 
 renderGoods(goods);
