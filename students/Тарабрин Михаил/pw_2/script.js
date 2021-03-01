@@ -46,5 +46,6 @@ class Hamburger {
     }
 };
 function orderHamburger() {
-    return hamburger = new Hamburger()
+    const hamburger = new Hamburger();
+    return hamburger;
 }
