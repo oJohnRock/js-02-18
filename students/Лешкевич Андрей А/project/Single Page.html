@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Brand shop - Home</title>
+    <title>Brand shop - Some Product Page</title>
     <!-- Required meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -17,21 +17,13 @@
     <script type="text/javascript" src="js/helpers.js"></script>
     <script type="text/javascript" src="js/cart.js"></script>
     <script type="text/javascript" src="js/catalog.js"></script>
+    <script type="text/javascript" src="js/slider.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
     <script type="text/javascript">
         "use strict";
-        var prodCatalog2Render = [1, 2, 3, 4, 5, 6, 7, 8];
-        var cart2Render = [
-            {   id:1,
-                type: 0,
-                quantity: 1
-            },
-            {   id:4,
-                type: 0,
-                quantity: 2
-            }
-        ];
-        var cart, catalog;
+        var prodCatalog2Render = [18, 19, 20, 21];
+        var cart2Render = {};
+        var cart, catalog, slider;
         document.addEventListener("DOMContentLoaded", pageInit);
 
     </script>
@@ -254,63 +246,103 @@
         </nav>
     </header>
     <main>
-        <section class="slider">
-            <div class="wrap slider-wrap">
-                <h1><span>THE BRAND</span> OF&nbsp;LUXERIOUS <span>FASHION</span></h1>
+        <section class="top-ribbon top-ribbon-nomargin">
+            <div class="wrap top-ribbon-wrap">
+                <h1>New Arrivals</h1>
+                <div class="breadcrumbs">
+                    <a href="Home">Home</a> / <a href="#">Men</a> / <span class="current">New Arrivals</span>
+                </div>
             </div>
         </section>
-        <section class="category">
-            <div class="wrap category-wrap">
-                <div class="col">
-                    <div class="item"><a href="#"><img src="img/category_man.png" alt="">
-                            <h3>hOT&nbsp;dEAL<br><span>FOR MEN</span></h3>
-                        </a>
-                    </div>
-                    <div class="item"><a href="#"><img src="img/category_accesories.png" alt="">
-                            <h3>LUXIROUS&nbsp;&&nbsp;trendy<br><span>ACCESORIES</span></h3>
-                        </a>
+        <section id="slider" class="top-slider" data-width="597px" data-height="724px">
+            <div class="btn-sqr_ar"><a href="#" onclick="slider.left();return false;" class="btn-sqr_ar__link clear-fix"><span class="btn-sqr_ar__icon"><i class="fa fa-angle-left"></i></span>
+                </a>
+            </div>
+            <div class="wrap top-slider-wrap">
+                <div class="top-slider-image"><img src="img/catalog_item_22_big.png" alt=""></div>
+            </div>
+            <div class="btn-sqr_ar"><a href="#" onclick="slider.right();return false;" class="btn-sqr_ar__link clear-fix"><span class="btn-sqr_ar__icon"><i class="fa fa-angle-left"></i></span>
+                </a>
+            </div>
+        </section>
+        <section class="product-adjust">
+            <div class="wrap product-adjust-wrap">
+                <div class="collection-selector">
+                    <div class="line">WOMEN COLLECTION</div>
+                    <div class="line">
+                        <div class="slide-selection">
+                            <a href="#" class="slide-selection-btn"></a>
+                            <a href="#" class="slide-selection-btn slide-selection-btn__active"></a>
+                            <a href="#" class="slide-selection-btn"></a>
+                        </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="item"><a href="#"><img src="img/category_women.png" alt="">
-                            <h3>30%&nbsp;offer<br><span>women</span></h3>
-                        </a>
-                    </div>
-                    <div class="item"><a href="#"><img src="img/category_kids.png" alt="">
-                            <h3>new&nbsp;arrivals<br><span>FOR kids</span></h3>
-                        </a>
+                <h3>Moschino Cheap And Chic</h3>
+                <p class="description">Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.</p>
+                <div class="char-wrap">
+                    <div class="characteristics">
+                        <div class="line">
+                            <p><span class="type">MATERIAL:</span> COTTON</p>
+                            <p><span class="type">DESIGNER:</span> BINBURHAN</p>
+                        </div>
+                        <div class="line"><span class="type">$561</span></div>
                     </div>
                 </div>
+                <section class="cart-form">
+                    <form action="#" class="cart-form-wrap">
+                        <div class="selectors">
+                            <div class="col">
+                                <h3>CHOOSE COLOR</h3>
+                                <div class="menu"></div>
+                                <details class="cust-select">
+                                    <summary><i class="color color__red"></i><span>Red</span></summary>
+                                    <ul class="dropdown">
+                                        <li><a href="#"><i class="color color__red"></i> Red</a></li>
+                                        <li><a href="#"><i class="color color__green"></i> Green</a></li>
+                                        <li><a href="#"><i class="color color__blue"></i> Blue</a></li>
+                                    </ul>
+                                </details>
+                            </div>
+                            <div class="col">
+                                <h3>CHOOSE SIZE</h3>
+                                <div class="menu">
+                                    <details class="cust-select">
+                                        <summary><span></span><span>XXS</span></summary>
+                                        <ul class="dropdown">
+                                            <li><a href="#">XXS</a></li>
+                                            <li><a href="#">XS</a></li>
+                                            <li><a href="#">S</a></li>
+                                            <li><a href="#">M</a></li>
+                                            <li><a href="#">L</a></li>
+                                            <li><a href="#">XL</a></li>
+                                            <li><a href="#">XXL</a></li>
+                                        </ul>
+                                    </details>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h3>QUANTITY</h3>
+                                <input type="number" value="2">
+                            </div>
+                        </div>
+                        <div class="btn-sqr_adc"><a href="" class="btn-sqr_adc__link clear-fix">
+                                <div class="btn-sqr_adc__wrap"><img src="img/cart_brand.png" alt="" class="btn-sqr_adc__icon"><span class="btn-sqr_adc__text">Add to Cart</span></div>
+                            </a>
+                        </div>
+                    </form>
+                </section>
             </div>
         </section>
         <section class="products">
             <div class="wrap products-wrap">
                 <div class="head">
-                    <h2>Fetured Items</h2>
-                    <p>Shop for items based on what we featured in this week</p>
+                    <h2 class="upper">you may like also</h2>
                 </div>
                 <ul id="catalog" class="products-grid_list">
-                    <!-- Replaced by JavaScript 
+                    <!-- Replaced by JavaScript
                     <li class="products-grid_item">
                         <div class="top-block">
-                            <div class="visible"><img src="img/catalog_item_01.png" alt=""></div>
-                            <div class="hovered">
-                                <div class="btn-sqr_adcw">
-                                    <a href="Product.html" class="btn-sqr_adcw__link clear-fix">
-                                        <div class="btn-sqr_adcw__wrap"><img src="img/cart_white.png" alt="" class="btn-sqr_adcw__icon"><span class="btn-sqr_adcw__text">Add to Cart</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="Product.html" class="products-grid_link">
-                            <h3>Mango People T-shirt</h3>
-                            <p>$52.00</p>
-                        </a>
-                    </li>
-                    <li class="products-grid_item">
-                        <div class="top-block">
-                            <div class="visible"><img src="img/catalog_item_02.png" alt=""></div>
+                            <div class="visible"><img src="img/catalog_item_18.png" alt=""></div>
                             <div class="hovered">
                                 <div class="btn-sqr_adcw"><a href="Product.html" class="btn-sqr_adcw__link clear-fix">
                                         <div class="btn-sqr_adcw__wrap"><img src="img/cart_white.png" alt="" class="btn-sqr_adcw__icon"><span class="btn-sqr_adcw__text">Add to Cart</span></div>
@@ -325,7 +357,7 @@
                     </li>
                     <li class="products-grid_item">
                         <div class="top-block">
-                            <div class="visible"><img src="img/catalog_item_03.png" alt=""></div>
+                            <div class="visible"><img src="img/catalog_item_19.png" alt=""></div>
                             <div class="hovered">
                                 <div class="btn-sqr_adcw"><a href="Product.html" class="btn-sqr_adcw__link clear-fix">
                                         <div class="btn-sqr_adcw__wrap"><img src="img/cart_white.png" alt="" class="btn-sqr_adcw__icon"><span class="btn-sqr_adcw__text">Add to Cart</span></div>
@@ -340,7 +372,7 @@
                     </li>
                     <li class="products-grid_item">
                         <div class="top-block">
-                            <div class="visible"><img src="img/catalog_item_04.png" alt=""></div>
+                            <div class="visible"><img src="img/catalog_item_20.png" alt=""></div>
                             <div class="hovered">
                                 <div class="btn-sqr_adcw"><a href="Product.html" class="btn-sqr_adcw__link clear-fix">
                                         <div class="btn-sqr_adcw__wrap"><img src="img/cart_white.png" alt="" class="btn-sqr_adcw__icon"><span class="btn-sqr_adcw__text">Add to Cart</span></div>
@@ -355,52 +387,7 @@
                     </li>
                     <li class="products-grid_item">
                         <div class="top-block">
-                            <div class="visible"><img src="img/catalog_item_05.png" alt=""></div>
-                            <div class="hovered">
-                                <div class="btn-sqr_adcw"><a href="Product.html" class="btn-sqr_adcw__link clear-fix">
-                                        <div class="btn-sqr_adcw__wrap"><img src="img/cart_white.png" alt="" class="btn-sqr_adcw__icon"><span class="btn-sqr_adcw__text">Add to Cart</span></div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="Product.html" class="products-grid_link">
-                            <h3>Mango People T-shirt</h3>
-                            <p>$52.00</p>
-                        </a>
-                    </li>
-                    <li class="products-grid_item">
-                        <div class="top-block">
-                            <div class="visible"><img src="img/catalog_item_06.png" alt=""></div>
-                            <div class="hovered">
-                                <div class="btn-sqr_adcw"><a href="Product.html" class="btn-sqr_adcw__link clear-fix">
-                                        <div class="btn-sqr_adcw__wrap"><img src="img/cart_white.png" alt="" class="btn-sqr_adcw__icon"><span class="btn-sqr_adcw__text">Add to Cart</span></div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="Product.html" class="products-grid_link">
-                            <h3>Mango People T-shirt</h3>
-                            <p>$52.00</p>
-                        </a>
-                    </li>
-                    <li class="products-grid_item">
-                        <div class="top-block">
-                            <div class="visible"><img src="img/catalog_item_07.png" alt=""></div>
-                            <div class="hovered">
-                                <div class="btn-sqr_adcw"><a href="Product.html" class="btn-sqr_adcw__link clear-fix">
-                                        <div class="btn-sqr_adcw__wrap"><img src="img/cart_white.png" alt="" class="btn-sqr_adcw__icon"><span class="btn-sqr_adcw__text">Add to Cart</span></div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="Product.html" class="products-grid_link">
-                            <h3>Mango People T-shirt</h3>
-                            <p>$52.00</p>
-                        </a>
-                    </li>
-                    <li class="products-grid_item">
-                        <div class="top-block">
-                            <div class="visible"><img src="img/catalog_item_08.png" alt=""></div>
+                            <div class="visible"><img src="img/catalog_item_21.png" alt=""></div>
                             <div class="hovered">
                                 <div class="btn-sqr_adcw"><a href="Product.html" class="btn-sqr_adcw__link clear-fix">
                                         <div class="btn-sqr_adcw__wrap"><img src="img/cart_white.png" alt="" class="btn-sqr_adcw__icon"><span class="btn-sqr_adcw__text">Add to Cart</span></div>
@@ -415,41 +402,6 @@
                     </li>
                     -->
                 </ul>
-                <div class="footer">
-                    <div class="btn-sqr_ba"><a href="#" class="btn-sqr_ba__link clear-fix"><span class="btn-sqr_ba__text">Browse All Product</span><span class="btn-sqr_ba__icon"><i class="fa fa-long-arrow-right"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="feature">
-            <div class="wrap feature-wrap">
-                <div class="banner">
-                    <div class="col">
-                        <h2>30%&nbsp;<span>OFFER</span><br><span>FOR WOMEN</span></h2>
-                    </div>
-                    <div class="col">
-                        <div class="item">
-                            <img src="img/feature_slider_delivery.png" alt="">
-                            <div class="cont">
-                                <h3>Free Delivery</h3>
-                                <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
-                            </div>
-                        </div>
-                        <div class="item"><img src="img/feature_slider_sales-discounts.png" alt="">
-                            <div class="cont">
-                                <h3>Sales & discounts</h3>
-                                <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
-                            </div>
-                        </div>
-                        <div class="item"><img src="img/feature_slider_quality.png" alt="">
-                            <div class="cont">
-                                <h3>Quality assurance</h3>
-                                <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
         <div class="footer-baloon"></div>
