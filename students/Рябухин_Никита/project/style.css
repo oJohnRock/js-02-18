@@ -3482,6 +3482,7 @@ main {
 
 .header .top-cart {
   position: relative;
+  cursor: pointer;
 }
 
 .header .top-cart__items {
@@ -3510,6 +3511,7 @@ main {
   position: absolute;
   left: -15px;
   top: 50px;
+  display: none;
 }
 
 .cart-togle__item {
