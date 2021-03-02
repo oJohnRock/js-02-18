@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e1714fe2-caa1-4423-a6de-443bf78bc40d" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Less File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1ophTtwxdcuOEztV9JXps3zvthw" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="NewWatcherDialog.advanced.open" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Roaming/npm/lessc" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dima\PhpstormProjects\js-02-18\students\Лядский Дмитрий\Project" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dima\PhpstormProjects\js-02-18\students\Лядский Дмитрий" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e1714fe2-caa1-4423-a6de-443bf78bc40d" name="Default Changelist" comment="" />
+      <created>1613989450390</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613989450390</updated>
+      <workItem from="1613989453505" duration="7553000" />
+      <workItem from="1614238899215" duration="922000" />
+      <workItem from="1614421190335" duration="195000" />
+      <workItem from="1614421394360" duration="108000" />
+    </task>
+    <task id="LOCAL-00001" summary="1hw">
+      <created>1614239138034</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1614239138034</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1hw" />
+    <option name="LAST_COMMIT_MESSAGE" value="1hw" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="845" y="353" width="557" height="427" key="#File_Watchers" timestamp="1614003075849">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="845" y="353" width="557" height="427" key="#File_Watchers/0.0.1920.1040@0.0.1920.1040" timestamp="1614003075849" />
+    <state x="731" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614421326337">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="731" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1614421326337" />
+    <state x="740" y="342" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1614002654586">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="342" key="#com.intellij.ide.macro.MacrosDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1614002654586" />
+    <state x="528" y="88" key="CommitChangelistDialog2" timestamp="1614239137711">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="528" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1614239137711" />
+    <state x="634" y="274" width="662" height="679" key="EditFileWatcherDialog" timestamp="1614003117577">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="634" y="274" width="662" height="679" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1614003117577" />
+    <state x="204" y="257" key="FileChooserDialogImpl" timestamp="1614002963693">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="204" y="257" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1614002963693" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1614003118898">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1614003118898" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1614239140378">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1614239140378" />
+    <state x="769" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1614421449870">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1614421449870" />
+    <state x="752" y="495" key="scopes" timestamp="1614002560407">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="752" y="495" key="scopes/0.0.1920.1040@0.0.1920.1040" timestamp="1614002560407" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand>
+      <path>
+        <item name="js-02-18" type="b2602c69:ProjectViewProjectNode" />
+        <item name="js-02-18" type="462c0819:PsiDirectoryNode" />
+      </path>
+    </expand>
+    <select />
+  </component>
+</project>
