@@ -122,7 +122,12 @@ class Hamburger {
 		}
 
 	}
-	
+	changeStuffing (stuffing){
+		this.#stuffing=stuffing;
+	}
+	changeSize(size){
+		this.#size=size;
+	}
 	addTopping(topping) {
 		if(this.#topp.includes(topping)){
 			this.#topping = topping;
