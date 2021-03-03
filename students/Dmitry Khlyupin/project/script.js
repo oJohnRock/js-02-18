@@ -21,15 +21,16 @@
 function makeGetRequest(url) {
     return new Promise ((resolve, reject) => {
         let xhr = new XMLHttpRequest();
-
+        xhr.open('GET', url, true);
+        xhr.send();
 
         xhr.onreadystatechange = function () {
             if(xhr.readyState === 4) {
                 resolve(xhr.responseText);
             } 
+
         }
-        xhr.open('GET', url, true);
-        xhr.send();
+        
     });
 }
 
@@ -67,8 +68,10 @@ class GoodsList {
     fetchGoods(callback) {
         makeGetRequest(`${API_URL}/catalogData.json`).then((goods) => {
             this.goods = JSON.parse(goods);
+            console.log('Загрузка завершена...')
             callback();
-        }, (err) => console.log(err));
+        });
+        console.log('Идет загрузка...');
     }
 
     render() {
@@ -97,6 +100,11 @@ class Cart {
         this.goods = [];
     }
     // Опишем методы корзины:
+    fetchCart() { // Получение корзины с сервера
+
+    }
+
+
     renderCart() {  // - метод для отрисовки корзины
 
     };     
