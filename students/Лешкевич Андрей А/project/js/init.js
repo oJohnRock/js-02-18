@@ -6,6 +6,7 @@ function pageInit() {
             prodCatalog = response['catalog']
         },
         error => {
+            console.log("Catalog load error");
             prodCatalog = []
         }
     ).then(
@@ -14,6 +15,7 @@ function pageInit() {
                 cart = new CCart(prodCatalog, response['cart']);
             },
             error => {
+                console.log("Cart load error");
                 cart = new CCart(prodCatalog, []);
             }
         )
@@ -24,6 +26,7 @@ function pageInit() {
                 catalog = new CPoductCatalogHTML(document.getElementById("catalog"), prodCatalog, response['displayed']); 
             },
             error => {
+                console.log("Catalog Displayed load error");
                 catalog = new CPoductCatalogHTML(document.getElementById("catalog"), prodCatalog, []);
             }
         )

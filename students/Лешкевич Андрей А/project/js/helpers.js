@@ -31,11 +31,15 @@ function httpGet(url) {
         } else {
           var error = new Error(this.statusText);
           error.code = this.status;
+          console.log(`url error: ${url}`);
+          console.log(error);
           reject(error);
         }
       };
   
       xhr.onerror = function() {
+        console.log(`url error: ${url}`);
+        console.log("Network Error");
         reject(new Error("Network Error"));
       };
   
