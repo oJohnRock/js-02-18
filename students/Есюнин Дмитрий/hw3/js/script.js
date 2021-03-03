@@ -1,4 +1,4 @@
-var fileNoPhotoAvailable = "../img/no-photo-available.jpg";
+var fileNoPhotoAvailable = "./img/no-photo-available.jpg";
 
 
 class Application {
@@ -60,25 +60,25 @@ class GoodList {
       {
         id: 1001,
         title: 'Shirt',
-        images:['../img/shirt.jpg'],
+        images:['./img/shirt.jpg'],
         price: 150
       },      
       { 
         id: 1002,
         title: 'Socks',
-        images:['../img/socks.jpg', '../img/socks.jpg' , '../img/socks.jpg'],
+        images:['./img/socks.jpg', './img/socks.jpg' , './img/socks.jpg'],
         price: 50
       },
       {
         id: 1003,
         title: 'Jacket',
-        images:['../img/jacket.jpg', '../img/jacket.jpg'],
+        images:['./img/jacket.jpg', './img/jacket.jpg'],
         price: 350
       },
       {
         id:1004,
         title: 'Shoes',
-        images:['../img/shoes.jpg'],
+        images:['./img/shoes.jpg'],
         price: 250
       }
     ];    
