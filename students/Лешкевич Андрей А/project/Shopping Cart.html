@@ -20,21 +20,10 @@
     <script type="text/javascript" src="js/init.js"></script>
     <script type="text/javascript">
         "use strict";
-        var cart2Render = [
-            {   id:15,
-                type: 0,
-                quantity: 2
-            },
-            {   id:16,
-                type: 0,
-                quantity: 2
-            },
-            {   id:17,
-                type: 0,
-                quantity: 2
-            }
-        ];
-        var cart, catalog;
+        var cart, catalog, prodCatalog = [],
+            urlCart = "api/cart/get/Shopping Cart.json",
+            urlCatalog = "api/catalog/elements/get/Shopping Cart.json",
+            urlCatalogDisplayed = "api/catalog/displayed/get/Shopping Cart.json";
 
         function go2StepTwo() {
             document.getElementById("StepTwo").open = true;

@@ -19,19 +19,11 @@
     <script type="text/javascript" src="js/catalog.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
     <script type="text/javascript">
-        "use strict";
-        var prodCatalog2Render = [];
-        var cart2Render = [
-            {   id:1,
-                type: 0,
-                quantity: 1
-            },
-            {   id:4,
-                type: 0,
-                quantity: 2
-            }
-        ];
-        var cart, catalog;
+        "use strict";        
+        var cart, catalog, prodCatalog = [],
+            urlCart = "api/cart/get/checkout.json",
+            urlCatalog = "api/catalog/elements/get/all.json",
+            urlCatalogDisplayed = "api/catalog/displayed/get/checkout.json";
         document.addEventListener("DOMContentLoaded", pageInit);
 
     </script>

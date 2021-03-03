@@ -20,18 +20,10 @@
     <script type="text/javascript" src="js/init.js"></script>
     <script type="text/javascript">
         "use strict";
-        var prodCatalog2Render = [9, 10, 3, 11, 8, 12, 6, 13, 14];
-        var cart2Render = [
-            {   id:1,
-                type: 0,
-                quantity: 1
-            },
-            {   id:4,
-                type: 0,
-                quantity: 2
-            }
-        ];
-        var cart, catalog;
+        var cart, catalog, prodCatalog = [],
+            urlCart = "api/cart/get/Product.json",
+            urlCatalog = "api/catalog/elements/get/Product.json",
+            urlCatalogDisplayed = "api/catalog/displayed/get/Product.json";
         document.addEventListener("DOMContentLoaded", pageInit);
 
     </script>
