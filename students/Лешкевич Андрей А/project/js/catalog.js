@@ -22,7 +22,7 @@ class CPoductCatalogHTML {
     }
 
     itemGen(_obj,_t = 0) {
-        return `<li data-catalog-item="${_obj.id}" data-catalog-item-t="${_t}" class="products-grid_item">
+        return (_obj ? `<li data-catalog-item="${_obj.id}" data-catalog-item-t="${_t}" class="products-grid_item">
                         <div class="top-block">
                             <div class="visible"><img src="${_obj.type[_t].img}" alt=""></div>
                             <div class="hovered">
@@ -36,6 +36,6 @@ class CPoductCatalogHTML {
                             <h3>${_obj.name}</h3>
                             <p>$${float2str(_obj.type[_t].price)}</p>
                         </a>
-                    </li>`;
+                    </li>` : null);
     }
 }
