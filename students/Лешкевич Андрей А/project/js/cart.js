@@ -39,9 +39,12 @@ class CCart {
             grand_total: 0
         };
         for (let item of Object.values(this.items)) {
-            this.stat.grand_total += this.catalog.find(obj => { return obj.id === item.id }).type[item.type].price * item.quantity;
-            this.stat.count += item.quantity;
-            this.stat.products++;
+            let cat = this.catalog.find(obj => { return obj.id === item.id });
+            if (cat) {
+                this.stat.grand_total += cat.type[item.type].price * item.quantity;
+                this.stat.count += item.quantity;
+                this.stat.products++;
+            }
         }
         for (let html of Object.values(this.html)) {
             html.updateStat();

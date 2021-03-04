@@ -32,7 +32,9 @@ class CSliderHTML {
     itemGen(_href) {
         return `
             <div class="top-slider-image top-slider-hidden">
-                <img src="${_href}" alt="" style="width: ${this.width}; height: ${this.height}">
+                <a href="${_href}" class="progressive replace">
+                    <img src="img/tiny.a1.21.jpg" class="preview" alt="image" style="width: ${this.width}; height: ${this.height}" />
+                </a>
             </div>`;
     }
 

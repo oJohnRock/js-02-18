@@ -10,16 +10,28 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/v4-shims.min.css" integrity="sha512-NfhLGuxy6G12XHj7/bvm0RC3jmR25RdpImn8P19aIMmN5pndO0fvIg78ihN2WIJtVRs+AYVrnYF4AipVikGPLg==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/solid.min.css" integrity="sha512-xIEmv/u9DeZZRfvRS06QVP2C97Hs5i0ePXDooLa5ZPla3jOgPT/w6CzoSMPuRiumP7A/xhnUBxRmgWWwU26ZeQ==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/fontawesome.min.css" integrity="sha512-shT5e46zNSD6lt4dlJHb+7LoUko9QZXTGlmWWx0qjI9UhQrElRb+Q5DM7SVte9G9ZNmovz2qIaV7IWv0xQkBkw==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/v4-shims.min.css"
+        integrity="sha512-NfhLGuxy6G12XHj7/bvm0RC3jmR25RdpImn8P19aIMmN5pndO0fvIg78ihN2WIJtVRs+AYVrnYF4AipVikGPLg=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/solid.min.css"
+        integrity="sha512-xIEmv/u9DeZZRfvRS06QVP2C97Hs5i0ePXDooLa5ZPla3jOgPT/w6CzoSMPuRiumP7A/xhnUBxRmgWWwU26ZeQ=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/fontawesome.min.css"
+        integrity="sha512-shT5e46zNSD6lt4dlJHb+7LoUko9QZXTGlmWWx0qjI9UhQrElRb+Q5DM7SVte9G9ZNmovz2qIaV7IWv0xQkBkw=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/brands.min.css"
+        integrity="sha512-dBL5cY4qTt42J1cfabCHTYR7KMztyd+n4t2GhD6EH/MKWJIIHuEYckJ1nHEpTwIaiDkrjzbc6WyiSkdLP+3INQ=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/progressive-image.js/dist/progressive-image.css">
+    <script src="https://cdn.jsdelivr.net/npm/progressive-image.js/dist/progressive-image.js"></script>
     <script type="text/javascript" src="js/helpers.js"></script>
     <script type="text/javascript" src="js/cart.js"></script>
     <script type="text/javascript" src="js/catalog.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
     <script type="text/javascript">
-        "use strict";        
+        "use strict";
         var cart, catalog, prodCatalog = [],
             urlCart = "api/cart/get/checkout.json",
             urlCatalog = "api/catalog/elements/get/all.json",
@@ -32,43 +44,63 @@
 <body>
     <header class="header">
         <section class="header-top-wrap wrap">
-            <section class="logo"><a href="index.html"><img src="img/logo.png" alt=""><span>BRAN<span>D</span></span></a></section>
+            <section class="logo"><a href="index.html"><img src="img/logo.png"
+                        alt=""><span>BRAN<span>D</span></span></a></section>
             <section class="search">
 
                 <div class="btn-browse">
-                    <div class="btn-browse__hover-wrap"><a href="#" class="btn-browse__link"><span class="btn-browse__text">Browse</span><span class="btn-browse__icon"><i class="fa fa-caret-down"></i></span>
+                    <div class="btn-browse__hover-wrap"><a href="#" class="btn-browse__link"><span
+                                class="btn-browse__text">Browse</span><span class="btn-browse__icon"><i
+                                    class="fa fa-caret-down"></i></span>
                         </a>
                         <div class="btn-browse__ddc">
                             <div class="btn-browse__ddc-nav__wrap">
                                 <h3>Women</h3>
                                 <ul class="btn-browse__ddc-nav">
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Dresses</a></li>
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Tops</a></li>
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Sweaters/Knits</a></li>
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Jackets/Coats</a></li>
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Blazers</a></li>
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Denim</a></li>
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Leggings/Pants</a></li>
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Skirts/Shorts</a></li>
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Accessories</a></li>
+                                    <li class="btn-browse__ddc-item"><a href="#"
+                                            class="btn-browse__ddc-link">Dresses</a></li>
+                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Tops</a>
+                                    </li>
+                                    <li class="btn-browse__ddc-item"><a href="#"
+                                            class="btn-browse__ddc-link">Sweaters/Knits</a></li>
+                                    <li class="btn-browse__ddc-item"><a href="#"
+                                            class="btn-browse__ddc-link">Jackets/Coats</a></li>
+                                    <li class="btn-browse__ddc-item"><a href="#"
+                                            class="btn-browse__ddc-link">Blazers</a></li>
+                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Denim</a>
+                                    </li>
+                                    <li class="btn-browse__ddc-item"><a href="#"
+                                            class="btn-browse__ddc-link">Leggings/Pants</a></li>
+                                    <li class="btn-browse__ddc-item"><a href="#"
+                                            class="btn-browse__ddc-link">Skirts/Shorts</a></li>
+                                    <li class="btn-browse__ddc-item"><a href="#"
+                                            class="btn-browse__ddc-link">Accessories</a></li>
                                 </ul>
                             </div>
                             <div class="btn-browse__ddc-nav__wrap">
                                 <h3>Men</h3>
                                 <ul class="btn-browse__ddc-nav">
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Tees/Tank tops</a></li>
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Shirts/Polos</a></li>
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Sweaters</a></li>
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Sweatshirts/Hoodies</a></li>
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Blazers</a></li>
-                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Jackets/vests</a></li>
+                                    <li class="btn-browse__ddc-item"><a href="#" class="btn-browse__ddc-link">Tees/Tank
+                                            tops</a></li>
+                                    <li class="btn-browse__ddc-item"><a href="#"
+                                            class="btn-browse__ddc-link">Shirts/Polos</a></li>
+                                    <li class="btn-browse__ddc-item"><a href="#"
+                                            class="btn-browse__ddc-link">Sweaters</a></li>
+                                    <li class="btn-browse__ddc-item"><a href="#"
+                                            class="btn-browse__ddc-link">Sweatshirts/Hoodies</a></li>
+                                    <li class="btn-browse__ddc-item"><a href="#"
+                                            class="btn-browse__ddc-link">Blazers</a></li>
+                                    <li class="btn-browse__ddc-item"><a href="#"
+                                            class="btn-browse__ddc-link">Jackets/vests</a></li>
                                 </ul>
                             </div>
 
                         </div>
                     </div>
 
-                    <form action="#" class="form-search clear-fix"><input name="search" type="text" class="form-search__input" placeholder="Search for Item..."><a href="#" class="form-search__btn clear-fix"><i class="fa fa-search"></i></a></form>
+                    <form action="#" class="form-search clear-fix"><input name="search" type="text"
+                            class="form-search__input" placeholder="Search for Item..."><a href="#"
+                            class="form-search__btn clear-fix"><i class="fa fa-search"></i></a></form>
                 </div>
             </section>
             <section class="cart">
@@ -107,14 +139,18 @@
                         </ul>
                         <div class="btn-cart__ddc-total">
                             <div class="total-grand"><span>TOTAL</span><span class="total-grand-summ">$0.00</span></div>
-                            <div class="btn-sqr_bw"><a href="Checkout.html" class="btn-sqr_bw__link"><span class="btn-sqr_bw__text">Checkout</span></a>
+                            <div class="btn-sqr_bw"><a href="Checkout.html" class="btn-sqr_bw__link"><span
+                                        class="btn-sqr_bw__text">Checkout</span></a>
                             </div>
-                            <div class="btn-sqr_dl"><a href="Shopping%20Cart.html" class="btn-sqr_dl__link"><span class="btn-sqr_dl__text">Go to cart</span></a>
+                            <div class="btn-sqr_dl"><a href="Shopping%20Cart.html" class="btn-sqr_dl__link"><span
+                                        class="btn-sqr_dl__text">Go to cart</span></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="btn-account"><a href="#" class="btn-account__link clear-fix"><span class="btn-account__text">My Account</span><span class="btn-account__icon"><i class="fa fa-caret-down"></i></span>
+                <div class="btn-account"><a href="#" class="btn-account__link clear-fix"><span
+                            class="btn-account__text">My Account</span><span class="btn-account__icon"><i
+                                class="fa fa-caret-down"></i></span>
 
                     </a>
                 </div>
@@ -124,7 +160,8 @@
         <nav class="header-nav-wrap wrap">
             <ul class="nav-list">
                 <li class="nav-item">
-                    <div class="nav-item__hover-wrap"><a href="index.html" class="nav-link">Home</a><!-- <div class="nav-item__ddc"></div> -->
+                    <div class="nav-item__hover-wrap"><a href="index.html" class="nav-link">Home</a>
+                        <!-- <div class="nav-item__ddc"></div> -->
                     </div>
                 </li>
                 <li class="nav-item">
@@ -134,31 +171,40 @@
                                 <h3>Women</h3>
                                 <ul class="nav-item__ddc-list">
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Dresses</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Dresses</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Tops</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Tops</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Sweaters/Knits</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Sweaters/Knits</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Jackets/Coats</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Jackets/Coats</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Blazers</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Blazers</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Denim</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Denim</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Leggings/Pants</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Leggings/Pants</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Skirts/Shorts</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Skirts/Shorts</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Accessories </a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Accessories </a></div>
                                     </li>
                                 </ul>
                             </div>
@@ -166,16 +212,20 @@
                                 <h3>Women</h3>
                                 <ul class="nav-item__ddc-list">
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Dresses</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Dresses</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Tops</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Tops</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Sweaters/Knits</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Sweaters/Knits</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Jackets/Coats</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Jackets/Coats</a></div>
                                     </li>
                                 </ul>
                             </div>
@@ -183,16 +233,20 @@
                                 <h3>Women</h3>
                                 <ul class="nav-item__ddc-list">
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Dresses</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Dresses</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Tops</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Tops</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Sweaters/Knits</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Sweaters/Knits</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Jackets/Coats</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Jackets/Coats</a></div>
                                     </li>
                                 </ul>
                             </div>
@@ -200,20 +254,26 @@
                                 <h3>Women</h3>
                                 <ul class="nav-item__ddc-list">
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Dresses</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Dresses</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Tops</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Tops</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Sweaters/Knits</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Sweaters/Knits</a></div>
                                     </li>
                                     <li class="nav-item__ddc-item">
-                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#" class="nav-item__ddc-link">Jackets/Coats</a></div>
+                                        <div class="nav-item__ddc-item__hover-wrap"><a href="#"
+                                                class="nav-item__ddc-link">Jackets/Coats</a></div>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="nav-item__ddc-list__wrap__sale"><a href="#" class="nav-item__ddc-list__wrap__sale__link"><img src="img/sales_banner.png" alt=""></a></div>
+                            <div class="nav-item__ddc-list__wrap__sale"><a href="#"
+                                    class="nav-item__ddc-list__wrap__sale__link"><img src="img/sales_banner.png"
+                                        alt=""></a></div>
                         </div>
                     </div>
                 </li>
@@ -263,15 +323,19 @@
                             <form action="#" class="ship-addr">
                                 <h3>Check as a guest or register</h3>
                                 <p class="text-reg">Register with us for future convenience</p>
-                                <div class="radio"><input type="radio" id="ship-addr-type-guest" name="ship-addr-type" value="guest"><label for="ship-addr-type-guest">checkout as guest</label></div>
-                                <div class="radio"><input type="radio" id="ship-addr-type-reg" name="ship-addr-type" value="register" checked><label for="ship-addr-type-reg">register</label></div>
+                                <div class="radio"><input type="radio" id="ship-addr-type-guest" name="ship-addr-type"
+                                        value="guest"><label for="ship-addr-type-guest">checkout as guest</label></div>
+                                <div class="radio"><input type="radio" id="ship-addr-type-reg" name="ship-addr-type"
+                                        value="register" checked><label for="ship-addr-type-reg">register</label></div>
 
                                 <h3>register and save time!</h3>
                                 <p class="text-reg">Register with us for future convenience</p>
                                 <p class="text-adv"><i class="fa fa-angle-double-right"></i> Fast and easy checkout</p>
-                                <p class="text-adv"><i class="fa fa-angle-double-right"></i> Easy access to your order history and status</p>
+                                <p class="text-adv"><i class="fa fa-angle-double-right"></i> Easy access to your order
+                                    history and status</p>
 
-                                <div class="btn-sqr_dl"><a href="" class="btn-sqr_dl__link"><span class="btn-sqr_dl__text">Continue</span></a>
+                                <div class="btn-sqr_dl"><a href="" class="btn-sqr_dl__link"><span
+                                            class="btn-sqr_dl__text">Continue</span></a>
                                 </div>
                             </form>
                         </div>
@@ -279,11 +343,14 @@
                             <form class="login">
                                 <h3>Already registed?</h3>
                                 <p class="text-reg">Please log in below</p>
-                                <label for="login-email">EMAIL ADDRESS <span class="req-color">*</span></label><input type="email" id="login-email" name="login-email" value="">
-                                <label for="login-pass">PASSWORD <span class="req-color">*</span></label><input type="password" id="login-pass" name="login-pass" value="">
+                                <label for="login-email">EMAIL ADDRESS <span class="req-color">*</span></label><input
+                                    type="email" id="login-email" name="login-email" value="">
+                                <label for="login-pass">PASSWORD <span class="req-color">*</span></label><input
+                                    type="password" id="login-pass" name="login-pass" value="">
                                 <p class="req-color">* Required Fileds</p>
                                 <div class="btn-wrap">
-                                    <div class="btn-sqr_dl"><a href="" class="btn-sqr_dl__link"><span class="btn-sqr_dl__text">Log in</span></a>
+                                    <div class="btn-sqr_dl"><a href="" class="btn-sqr_dl__link"><span
+                                                class="btn-sqr_dl__text">Log in</span></a>
                                     </div><span>Forgot Password ?</span>
                                 </div>
 
@@ -371,7 +438,9 @@
                                 <h3>Subscribe</h3>
                                 <p>FOR OUR NEWLETTER AND PROMOTION</p>
                                 <div class="btn-subs">
-                                    <form action="#" class="form-subs"><input name="subscribe" type="email" class="form-subs__input" placeholder="Enter Your Email"><a href="#" class="form-subs__btn clear-fix">Subscribe</a></form>
+                                    <form action="#" class="form-subs"><input name="subscribe" type="email"
+                                            class="form-subs__input" placeholder="Enter Your Email"><a href="#"
+                                            class="form-subs__btn clear-fix">Subscribe</a></form>
                                 </div>
                             </div>
                         </div>
@@ -383,10 +452,14 @@
             <div class="wrap footer-wrap">
                 <div class="cont">
                     <div class="col logo">
-                        <section class="logo"><a href="#"><img src="img/logo.png" alt=""><span>BRAN<span>D</span></span></a></section>
-                        <p>Objectively transition extensive data rather than cross functional solutions. Monotonectally syndicate multidisciplinary materials before go forward benefits. Intrinsicly syndicate an expanded array of processes and cross-unit partnerships.<br><br>
+                        <section class="logo"><a href="#"><img src="img/logo.png"
+                                    alt=""><span>BRAN<span>D</span></span></a></section>
+                        <p>Objectively transition extensive data rather than cross functional solutions. Monotonectally
+                            syndicate multidisciplinary materials before go forward benefits. Intrinsicly syndicate an
+                            expanded array of processes and cross-unit partnerships.<br><br>
                             Efficiently plagiarize 24/365 action items and focused infomediaries.
-                            Distinctively seize superior initiatives for wireless technologies. Dynamically optimize.</p>
+                            Distinctively seize superior initiatives for wireless technologies. Dynamically optimize.
+                        </p>
                     </div>
                     <div class="col">
                         <h2>COMPANY</h2>
@@ -426,11 +499,16 @@
                 <div class="cont">
                     <div class="text">© 2017 Brand All Rights Reserved.</div>
                     <ul class="icon-nav">
-                        <li class="icon-nav-item"><a href="#" class="icon-nav-link"><i class="fa fa-facebook"></i></a></li>
-                        <li class="icon-nav-item"><a href="#" class="icon-nav-link"><i class="fa fa-twitter"></i></a></li>
-                        <li class="icon-nav-item"><a href="#" class="icon-nav-link"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li class="icon-nav-item"><a href="#" class="icon-nav-link"><i class="fa fa-pinterest-p"></i></a></li>
-                        <li class="icon-nav-item"><a href="#" class="icon-nav-link"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li class="icon-nav-item"><a href="#" class="icon-nav-link"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="icon-nav-item"><a href="#" class="icon-nav-link"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="icon-nav-item"><a href="#" class="icon-nav-link"><i class="fa fa-linkedin"
+                                    aria-hidden="true"></i></a></li>
+                        <li class="icon-nav-item"><a href="#" class="icon-nav-link"><i
+                                    class="fa fa-pinterest-p"></i></a></li>
+                        <li class="icon-nav-item"><a href="#" class="icon-nav-link"><i class="fa fa-google-plus"
+                                    aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
             </div>
