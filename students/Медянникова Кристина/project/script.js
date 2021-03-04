@@ -138,6 +138,6 @@ class BasketItem {
 
 const list = new GoodsList();
 const basket= new Basket();
-list.fetchGoods();
+list.fetchData();
 list.render();
-list.calcAllGoods();
+list.totalBasketPrice();
