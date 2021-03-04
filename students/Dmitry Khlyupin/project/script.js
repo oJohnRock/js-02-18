@@ -81,11 +81,12 @@ class GoodsList {
             listHtml += goodItem.render();
         });
 
-        //Добавим вывод стоимости всех товаров на страницу
-        listHtml += `                                                               
-            <p>Стоимость всех товаров равна: ${this.calcFullPrice()} рублей.</p>  
-        `;
         document.querySelector('.goods-list').innerHTML = listHtml;
+
+        //Добавим вывод стоимости всех товаров на страницу
+        document.querySelector('.description').innerHTML = `                                                               
+        <p>Стоимость всех товаров равна: ${this.calcFullPrice()} рублей.</p>  
+        `;
     }
 
 
@@ -100,13 +101,18 @@ class Cart {
         this.goods = [];
     }
     // Опишем методы корзины:
-    fetchCart() { // Получение корзины с сервера
-
+    fetchCart(callback) { // Получение корзины с сервера
+        makeGetRequest(`${API_URL}/getBasket.json`).then((goods) => {
+            this.goods = JSON.parse(goods);
+            console.log('Загрузка завершена...')
+            callback();
+        });
+        console.log('Идет загрузка...');
     }
 
 
     renderCart() {  // - метод для отрисовки корзины
-
+        console.log(this.goods)
     };     
 
     addItemToCart() { // - метод для добавления элемента в корзину
@@ -163,6 +169,7 @@ list.fetchGoods(() => {
     list.render();
 });
 
-
+const cart = new Cart();
+cart.fetchCart(() => cart.renderCart());
 
 
