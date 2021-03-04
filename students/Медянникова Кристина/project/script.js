@@ -85,7 +85,7 @@ class Basket {
             }
         });
         //this.basketGoods.push добавить элементы окрзины в конец
-            this.basketGoods.push (toBasketItem);
+        this.basketGoods.push (toBasketItem);
     } 
     //метод "удалить товар с корзины"
     deleteBasketItem() {
