@@ -175,3 +175,21 @@ footer{
     height: 64px;
     background-image: url("../img/loading.svg");
 }
+
+.serverIsNotAvailable{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.serverIsNotAvailable a,
+.serverIsNotAvailable a:visited{
+    color:grey;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.serverIsNotAvailable a:hover{
+    color:teal;
+    font-size: larger;
+}
+

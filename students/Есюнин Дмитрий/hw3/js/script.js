@@ -1,4 +1,4 @@
-var fileNoPhotoAvailable = "./img/no-photo-available.jpg";
+let fileNoPhotoAvailable = "./img/no-photo-available.jpg";
 
 
 class Application {
@@ -20,12 +20,19 @@ class Application {
     this.basket = new Basket();    
     this.goods = new GoodList();
 
+    this.goodsload();
+
+    // отрисовка полученных товаров
+    //this.render.goodList(this.goods.list);
+  }
+
+  goodsload() {
     // успех загрузки данных с псевдосервера  0 < sucessChance < 1
     let sucessChance = 0.7; 
-    // время ожидания отклика от сервера
+    // время ожидания отклика от псевдосервера
     let responseTimeMS = 2000; 
     // попытка загрузить данные с псевдосервера 
-    this.render.goodsloading();
+    this.render.goodsload();
 
     const p = new Promise( (resolve,reject) => {
       setTimeout( () => {
@@ -40,10 +47,7 @@ class Application {
     });
 
     p.then( () => this.render.goodList(this.goods.list))
-     .catch(() => this.render.serverIsNotAvailable());
-    
-    // отрисовка полученных товаров
-    //this.render.goodList(this.goods.list);
+    .catch(() => this.render.serverIsNotAvailable());
   }
 
 }
@@ -86,13 +90,11 @@ class GoodList {
 }
 
 
-
 class Basket {
 
   // общая стоимость всех товаров в корзине (приватная)
   #totalprice = 0;
   #totalquantity = 0;
-
 
   // типа конструктор
   constructor() {
@@ -141,6 +143,7 @@ class Basket {
    * метод убирает определенное количество товаров из корзины
    */
   minusItem(goods, quantity = 1) {
+    
     let id = goods.id;
     if (!this.items[id]) return;
     if (quantity >= this.items[id].quantity) return removeItem(id);
@@ -183,12 +186,11 @@ class HTMLRender{
     this.divGoodList = '.goods-list';
     this.divCartItemsQantity = '.qntty';
     
-  }  
-
+  } 
 
   createEl (name , type = "id", element = "div") {		
-	let el = document.createElement(element);
-	el.setAttribute(type, name);
+    let el = document.createElement(element);
+    el.setAttribute(type, name);
     document.body.appendChild(el);
     return el;
   }
@@ -213,8 +215,6 @@ class HTMLRender{
               </footer>`;
   }
   
-
-
   goodList(goods) {
     let el  = document.querySelector(this.divGoodList);
     if (!el) return console.log("not found DOM Element:", this.divGoodList);
@@ -241,8 +241,7 @@ class HTMLRender{
     el.innerHTML = (num > 9)? "9+": (num > 0)? num : ""; 
   }
 
-
-  goodsloading(){
+  goodsload(){
     let el  = document.querySelector(this.divGoodList);
     if (!el) return console.log("not found DOM Element:", this.divGoodList);
     el.innerHTML = '<div class="loading"></div>';
@@ -251,10 +250,13 @@ class HTMLRender{
   serverIsNotAvailable(){
     let el  = document.querySelector(this.divGoodList);
     if (!el) return console.log("not found DOM Element:", this.divGoodList);
-    el.innerHTML = '<h1>Упс.. Сервер недоступен</h1>';
-  }
-
-  
+    el.innerHTML = `
+    <div class="serverIsNotAvailable">
+      <h1>Что-то пошло не так... сервер недоступен</h1>
+      <a href="index.html">Попробуйте еще раз</a>
+    </div>
+    `;
+  } 
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
