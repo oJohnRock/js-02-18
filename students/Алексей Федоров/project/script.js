@@ -64,14 +64,19 @@ class GoodsList {   // список товаров
         this.goods = [];
     }
 
-    fetchData(callback) {
+    fetchData() {
         request('catalogData.json').then( (goods) => {
-            this.goods = goods;
-            console.log(this.goods);
-            callback();
+            return new Promise((resolve, reject) => {
+                this.goods = goods;
+                console.log(this.goods);
+                resolve();
+            });
+            
         }, (error) => {
                console.log(error);
-        });
+        }).then(() => {
+            this.render();
+        })
        
     }
 
@@ -150,16 +155,21 @@ class Basket {  // корзина
 
     render() {   // отрисовка корзины
         let listHtml = '';
+        let counter = 1;
         this.bask.contents.forEach(good => {
             const goodItem = new GoodsBasket(good.product_name, good.price, good.quantity);
-            listHtml += goodItem.render();
+            listHtml += goodItem.render(counter);
+            counter++;
         });
+
         this.countBasketPrice(); 
         document.querySelector('.basket').innerHTML = "";  
         
         listHtml += this.renderTotal(); //добавление в разметку общего количества и стоимости
 
         document.querySelector('.basket').insertAdjacentHTML("afterbegin", listHtml);
+        document.querySelector('.basket').addEventListener('click',(event) => {basket.goodsRemoveBasket(event)});
+        
         /*
         this.goods.forEach(good => {
             const goodItem = new GoodsBasket(good.product_name, good.price, good.quantity);
@@ -197,18 +207,21 @@ class Basket {  // корзина
     }
 
     goodsToBasket(event) {      // добавление товара в корзину
-        
+       
+        let count = event.target.getAttribute('data');
+        if (count === null) return;
         request('addToBasket.json').then( (goods) => {
            
-            console.log(goods);
+           
             
-            let count = event.target.getAttribute('data');
-            if (count === null) return;
+           // let count = event.target.getAttribute('data');
+           // if (count === null) return;
+            console.log(goods);
             let productName = list.goods[count].product_name;
             
             for (let goods of this.goods){
                 if (goods.product_name === productName) {  // если добавленный товар есть в корзине
-                    ++goods.quantity;               // увеличиваем кол-во штук в корзине
+                    ++goods.quantity;                      // увеличиваем кол-во штук в корзине
                                     
                     this.setOfProcessingBasket();
                     
@@ -226,11 +239,6 @@ class Basket {  // корзина
                console.log(error);
         });
 
-        
-        
-        
-        
-      
     }
     
     setOfProcessingBasket() {  // набор функций для обработки корзины
@@ -242,8 +250,15 @@ class Basket {  // корзина
         }
     }
 
-    goodsRemoveBasket(num){      // удалить товар из корзины
-         
+    goodsRemoveBasket(event){      // удалить товар из корзины
+        let count = event.target.getAttribute('data');
+        
+        if (count === null) return;
+        request('deleteFromBasket.json ').then( (goods) => {
+            console.log(goods);
+        }, (error) => {
+               console.log(error);
+        });
     }
 
 }
@@ -254,28 +269,21 @@ class GoodsBasket extends GoodsItem {   // товар для корзины
         this.quantity = quantity;
     }
 
-    render() { return `
+    render(a) { return `
         <div class="basket-item">
             <h3>${this.product_name}</h3>
             <p>${this.price}$</p>
             <p>${this.quantity}</p>
-            <button class="basket-button" type="button"><p>x</p></button>
+            <button class="basket-button" type="button" data="${a}">x</button>
         </div>`;
     }
 
 }
 
-const list = new GoodsList();
-//list.fetchGoods();
-//list.render();
-list.fetchData(() => {
-    list.render();
-});
-
-
 const basket = new Basket();
-//basket.goodsToBasket(1);
-//basket.goodsToBasket(2);
-//basket.goodsToBasket(3);
-//basket.countBasketPrice()
-//basket.render();
+const list = new GoodsList();
+
+list.fetchData();
+
+
+
