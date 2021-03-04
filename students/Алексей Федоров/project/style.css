@@ -112,6 +112,7 @@ button{
     border:rgb(12, 12, 12) ;
     background-color: rgb(12, 12, 12);
     color: honeydew;
+    text-align: center;
 }
 .basket-button p{
     margin: 0;
