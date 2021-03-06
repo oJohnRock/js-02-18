@@ -151,6 +151,7 @@ main
 
     &__right 
         @extend %flex
+        position: relative
 
     &__cart 
         img 
@@ -183,6 +184,7 @@ main
     
     .top-cart 
         position: relative
+        cursor: pointer
 
         &__items 
             position: absolute
@@ -198,6 +200,94 @@ main
             letter-spacing: 0.025em
             color: #ffffff
             text-align: center
+
+    &__cart-togle
+
+.cart-togle
+    width: 260px
+    padding: 15px
+    background: #fff
+    border: 1px solid #ececec
+    border-radius: 10px
+    z-index: 999
+    position: absolute
+    left: -15px
+    top: 50px
+    display: none
+
+    &__item
+        @extend %flex
+        flex-wrap: nowrap
+        padding-bottom: 10px
+        margin-bottom: 10px
+        border-bottom: 1px solid #ececec
+
+    &__image
+        width: 80px
+        margin-right: 5px
+
+    &__cont
+        align-self: flex-start
+        margin-top: 5px
+
+    &__title
+        font-weight: bold
+        font-size: 15px
+
+    &__atr
+        font-size: 14px
+        color: #f16d7f
+        margin-top: 15px
+        @extend %flex
+        justify-content: flex-start
+
+    &__count
+        &::after
+            content: ' x'
+
+    &__prise
+        margin-left: 4px
+
+    &__close
+        align-items: center
+        display: flex
+        padding: 0 0 0 10px
+
+    &__close-icon
+        width: 20px
+        height: 20px
+        justify-content: center
+        align-items: center
+        display: flex
+        border-radius: 100%
+        color: #fff
+        background: #c0c0c0
+        cursor: pointer
+
+    &__total-prise
+        @extend %flex
+        padding: 10px 0 20px 0
+        font-size: 20px
+        font-weight: bold
+
+    &__button
+
+        &.button
+            background: #fff
+            width: 100%
+            border: 1px solid #eaeaea
+            color: #777777
+            display: block
+            padding: 15px 0
+            text-align: center
+            text-transform: uppercase
+
+            &_active
+                border: 1px solid #f16d7f
+                color: #f16d7f
+                margin-bottom: 10px
+
+
 
 .menu 
     &__list 
