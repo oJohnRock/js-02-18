@@ -164,13 +164,8 @@ class CartItem {
     dec() {
         this.count--
     }
-    Brender() {
-        const { name, price, count } = this
-        const product = document.createElement('div')
-        product.innerHTML = `<h1>${name}</h1><p>${price} x ${count} = ${price * count}</p>`
-        product.classList.add('basket_product')
+    render() {
 
-        return product
     }
     inCartButton() {
         // кнопка добавления в корзину
