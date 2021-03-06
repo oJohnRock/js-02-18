@@ -1,3 +1,25 @@
+const API_ROOT = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+const request = (path = '', method = 'GET', body) => {
+
+    // return new Promise;
+    const xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                console.log({ response: xhr.responseText });
+                callback(JSON.parse(xhr.responseText));
+            } else {
+                console.error(xhr.responseText);
+            }
+        }
+    }
+
+    xhr.open(method, `${API_ROOT}/${path}`);
+
+    xhr.send(body);
+}
+
 class GoodsItem {
     constructor(item) {
         this.item = item;
@@ -6,7 +28,7 @@ class GoodsItem {
     render() {
         return `
             <div class="item">
-                <h2>${this.item.title}</h2>
+                <h2>${this.item.product_name}</h2>
                 <p>${this.item.price}</p>
             </div>
         `;
@@ -17,15 +39,26 @@ class GoodsList {
     constructor() {
         this.goods = [];
     }
-
-    fetchData() {
-        this.goods = [
-            { title: 'Монитор', price: 50000 },
-            { title: 'Клавиатура', price: 1500 },
-            { title: 'Мышь', price: 700 },
-            { title: 'Ноутбук', price: 35000 },
-        ];
+    fetchData(callback) {
+        request('catalogData.json', (goods) => {
+            this.goods = goods;
+            callback();
+        });
     }
+
+    // fetchData() {
+    //     return new Promise((resolve, reject) => {
+    //         if (code === 200) {
+    //             request('catalogData.json', (goods) => {
+    //                 this.goods = goods;
+    //                 resolve(data);
+    //             });
+    //         }
+    //         else {
+    //             reject('Error');
+    //         }
+    //     })
+    // }
 
     render() {
         const goodsString = this.goods.map(element => {
@@ -43,11 +76,42 @@ class Cart {
     constructor(items = []) {
         this.items = items
     }
+    findItem(main) {
+        return this.items.filter(item => item.name === main.name)[0]
+    }
     addItem() {
-        // добавление итема в корзину
+        const exists = this.findItem(item)
+        if (exists) {
+            exists.inc()
+        } else {
+            this.items.push(item)
+        }
+        this.render()
+
     }
     removeItem() {
-        // убрать итем из корзины
+        const exists = this.findItem(item)
+        if (!exists) {
+            return
+        }
+
+        if (exists.count > 1) {
+            exists.dec()
+        } else {
+            this.items = this.items.filter(main => item.name !== main.name)
+        }
+        this.render()
+    }
+    BasketTemplate() {
+        const RenderSpace = document.querySelector('.basket')
+        if (!RenderSpace) {
+            return
+        }
+        RenderSpace.innerHTML = ''
+        this.items.forEach(item => {
+            const template = item.Brender()
+            RenderSpace.appendChild(template)
+        })
     }
     fetchData() {
         // запрос данных с сервера
@@ -86,8 +150,13 @@ class CartItem {
     dec() {
         this.count--
     }
-    render() {
+    Brender() {
+        const { name, price, count } = this
+        const product = document.createElement('div')
+        product.innerHTML = `<h1>${name}</h1><p>${price} x ${count} = ${price * count}</p>`
+        product.classList.add('basket_product')
 
+        return product
     }
     inCartButton() {
         // кнопка добавления в корзину
@@ -99,5 +168,6 @@ class CartItem {
 
 
 const list = new GoodsList();
-list.fetchData();
-list.render();
+list.fetchData(() => {
+    list.render();
+});
