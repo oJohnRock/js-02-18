@@ -1,12 +1,41 @@
+const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+
+function makeGETRequest(url) {
+    return new Promise((resolve, reject) => {
+        var xhr;
+  
+        if (window.XMLHttpRequest) {
+          xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) { 
+          xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+      
+        //xhr.onreadystatechange = function () {
+        xhr.onload = function () {
+            if (xhr.readyState === 4) {
+                resolve(xhr.responseText);
+            }
+            else {
+                reject('Ошибка получения товаров');
+            }
+        }
+      
+        xhr.open('GET', url, true);
+        xhr.send();
+    });
+}
+
+
 class GoodsItem {
-    constructor(title, price){
-        this.title = title;
+    constructor(id_product, product_name, price){
+        this.id_product = id_product;
+        this.product_name = product_name;
         this.price = price;
     }
 
     render (a) { return `
         <div class="item">
-            <h2>${this.title}</h2>
+            <h2>${this.product_name}</h2>
             <p>${this.price}</p>
             <button class="product-button" type="button" data="${a}">Добавить</button>
         </div>`;
@@ -20,20 +49,33 @@ class GoodsList {
     }
 
     fetchGoods()  {
-        this.goods = [
-            { title: 'Монитор', price: 50000 },
-            { title: 'Клавиатура', price: 1500 },
-            { title: 'Мышь', price: 700 },
-            { title: 'Ноутбук', price: 35000 },
-
-        ];
+        makeGETRequest(`${API_URL}/catalogData.json`)
+        .then(
+            (goodsData) => {
+                this.goods = JSON.parse(goodsData);
+                list.render();
+                
+                return makeGETRequest(`${API_URL}/getBasket.json`);
+            }
+        )
+        .then(
+            (basketData) => {
+                basketData = JSON.parse(basketData)
+                basket.goods = basketData.contents;
+                basket.quantity = basketData.countGoods;
+                basket.renderQuantity();
+            }
+        )
+        .catch((errMessage) => {
+            console.log(errMessage);
+        })
     }
 
     render() {
         let listHtml = '';
         let counter = 0;
         this.goods.forEach(good => {
-            const goodItem = new GoodsItem(good.title, good.price);
+            const goodItem = new GoodsItem(good.id_product, good.product_name, good.price);
             listHtml += goodItem.render(counter);
             counter++;
         });
@@ -88,7 +130,7 @@ class Basket {
     render() {
         let listHtml = '';
         this.goods.forEach(good => {
-            const goodItem = new GoodsBasket(good.title, good.price, good.quantity);
+            const goodItem = new GoodsBasket(good.id_product, good.product_name, good.price, good.quantity);
             listHtml += goodItem.render();
         });
         this.countBasketPrice(); 
@@ -126,10 +168,10 @@ class Basket {
     goodsToBasket(event) {
         let count = event.target.getAttribute('data');
         if (count === null) return;
-        let productName = list.goods[count].title;
+        let productName = list.goods[count].product_name;
         
         for (let goods of this.goods){
-            if (goods.title === productName) {
+            if (goods.product_name === productName) {
                 // если добавленный товар есть в корзине, увеличиваем кол-во штук в корзине
                 goods.quantity++;
                 this.setOfProcessingBasket();
@@ -159,14 +201,14 @@ class Basket {
 
 
 class GoodsBasket extends GoodsItem {
-   constructor(title, price, quantity) {
-        super(title, price);
+   constructor(id_product, product_name, price, quantity) {
+        super(id_product, product_name, price);
         this.quantity = quantity;
     }
 
     render() { return `
         <div class="basket-item">
-            <p style="width: 250px;"><b>${this.title}</b></p>
+            <p style="width: 250px;"><b>${this.product_name}</b></p>
             <p style="width: 100px;">${this.price}</p>
             <p style="width: 50px;">${this.quantity}</p>
             <button class="button-remove" type="button"><p>x</p></button>
@@ -177,6 +219,5 @@ class GoodsBasket extends GoodsItem {
 
 const list = new GoodsList();
 list.fetchGoods();
-list.render();
 
 const basket = new Basket();
