@@ -41,7 +41,6 @@ class GoodsList {
     constructor(basket) {
         this.basket = basket;
         this.goods = [];
-        this.filteredGoods = [];
 
         document.querySelector('.goods').addEventListener('click', (event) => {
             console.log(event)
@@ -96,11 +95,6 @@ class GoodsList {
     addToBasket(item) {
         this.basket.addItem(item);
     }
-    filterGoods(searchValue) {
-        const regexp = new RegExp(searchValue, 'i');
-        this.filteredGoods = this.goods.filter((goodsItem) => regexp.test(goodsItem.product_name));
-        this.render();
-    }
 }
 
 
@@ -108,9 +102,6 @@ class Cart {
 
     constructor() {
         this.goods = [];
-    }
-    findItem(main) {
-        return this.items.filter(item => item.name === main.name)[0]
     }
     fetchData() {
         request('getBasket.json')
