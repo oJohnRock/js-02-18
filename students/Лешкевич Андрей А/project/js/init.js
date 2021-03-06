@@ -52,3 +52,5 @@ function pageInit() {
         slider = new CSliderHTML(tmp, ["https://picsum.photos/1920/1080?random=1", "img/catalog_item_22_big.png", "https://picsum.photos/1920/1080?random=2"]);
     }
 }
+
+document.addEventListener("DOMContentLoaded", pageInit);
