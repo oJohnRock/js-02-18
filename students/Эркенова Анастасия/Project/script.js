@@ -65,7 +65,6 @@ class GoodsList {
             request('catalogData.json')
                 .then((goods) => {
                     this.goods = goods;
-                    this.filteredGoods = goods;
                     resolve();
                 })
                 .catch((error) => {
