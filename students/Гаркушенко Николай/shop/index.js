@@ -1,26 +1,28 @@
-const goods = [
-  { id: 1, title: "Монитор", price: 50000, imageList: [] },
-  { id: 2, title: "Клавиатура", price: 1500, imageList: [] },
-  { id: 3, title: "Мышь", price: 700, imageList: [] },
-  { id: 4, title: "Ноутбук", price: 35000, imageList: [] },
-  { id: 5, title: "Монитор", price: 50000, imageList: [] },
-  { id: 6, title: "Клавиатура", price: 1500, imageList: [] },
-  { id: 7, title: "Мышь", price: 700, imageList: [] },
-  { id: 8, title: "Ноутбук", price: 35000, imageList: [] },
-  { id: 9, title: "Монитор", price: 50000, imageList: [] },
-  { id: 10, title: "Клавиатура", price: 1500, imageList: [] },
-  { id: 11, title: "Мышь", price: 700, imageList: [] },
-  { id: 12, title: "Ноутбук", price: 35000, imageList: [] },
-  { id: 13, title: "Монитор", price: 50000, imageList: [] },
-  { id: 14, title: "Клавиатура", price: 1500, imageList: [] },
-  { id: 15, title: "Мышь", price: 700, imageList: [] },
-  { id: 16, title: "Ноутбук", price: 35000, imageList: [] },
-];
+// const goods = [
+//   { id: 1, title: "Монитор", price: 50000, imageList: [] },
+//   { id: 2, title: "Клавиатура", price: 1500, imageList: [] },
+//   { id: 3, title: "Мышь", price: 700, imageList: [] },
+//   { id: 4, title: "Ноутбук", price: 35000, imageList: [] },
+//   { id: 5, title: "Монитор", price: 50000, imageList: [] },
+//   { id: 6, title: "Клавиатура", price: 1500, imageList: [] },
+//   { id: 7, title: "Мышь", price: 700, imageList: [] },
+//   { id: 8, title: "Ноутбук", price: 35000, imageList: [] },
+//   { id: 9, title: "Монитор", price: 50000, imageList: [] },
+//   { id: 10, title: "Клавиатура", price: 1500, imageList: [] },
+//   { id: 11, title: "Мышь", price: 700, imageList: [] },
+//   { id: 12, title: "Ноутбук", price: 35000, imageList: [] },
+//   { id: 13, title: "Монитор", price: 50000, imageList: [] },
+//   { id: 14, title: "Клавиатура", price: 1500, imageList: [] },
+//   { id: 15, title: "Мышь", price: 700, imageList: [] },
+//   { id: 16, title: "Ноутбук", price: 35000, imageList: [] },
+// ];
 
-const cartGoods = [
-  { id: 15, title: "Мышь", price: 700, imageList: [] },
-  { id: 16, title: "Ноутбук", price: 35000, imageList: [] },
-];
+// const cartGoods = [
+//   { id: 15, title: "Мышь", price: 700, imageList: [] },
+//   { id: 16, title: "Ноутбук", price: 35000, imageList: [] },
+// ];
+
+import RawGitHubRequest from "./modules/rawgithubrequest.js";
 
 //show case
 const getMainProductImage = (goodImages) => {
@@ -34,7 +36,7 @@ const renderShowCase = (htmlIdElement, goodList = []) => {
     <img src="assets/img/${getMainProductImage(good.imageList)}">
     <h2>${good.title}</h2>
     <p>${good.price}</p>
-    <button id="addToCart">В корзину</button>
+    <button id="addToCart">В корзину</button> 
   </div>`;
 
   const prdouctCartList = goodList
