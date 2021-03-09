@@ -5,7 +5,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <title>hw4</title>
     <style>
-        body {margin: 20px auto;  width: 600px; text-align: justify;}
+        body {margin: 20px auto;  width: 600px; text-align: justify; min-width: 600px;}
         div {margin-top: 10px;}
         .alert, .alert input, .alert textarea {outline: none; -moz-appearance: none; border: 1px solid crimson;}
         .alert small {color:  crimson;}
@@ -72,9 +72,9 @@
         el.innerHTML = `
         <hr>
     	<form id="form"">
-            <div class="username"><label>Ваше имя</label><input class="form-control" type="text" name="username" value=""><small></small></div>
-            <div class="telephone"><label>Ваш номер телефона</label><input class="form-control" type="tel" name="telephone"  value=""><small></small></div>
-            <div class="email"><label>Ваш email</label><input class="form-control" type="text" name="email" value=""><small></small></div>
+            <div class="username"><label>Имя</label><input class="form-control" type="text" name="username" value=""><small></small></div>
+            <div class="telephone"><label>Телефон</label><input class="form-control" type="tel" name="telephone"  value=""><small></small></div>
+            <div class="email"><label>E-mail</label><input class="form-control" type="text" name="email" value=""><small></small></div>
             <div class="text"><label>Текст</label><textarea class="form-control" name="text" rows="3"></textarea><small></small></div>
     	    <div class="btn btn-primary" onclick="checkForm()">Отправить</div>
     	</form>`;
@@ -86,48 +86,33 @@
         let form = document.getElementById("form");
         if (!form) return;
         let formData = new FormData(form);
-        let regexCheck;
-        let el;
-        let comment;
         let formValid = true;
         let result = "";
-
+		
+		let data = {
+			username: {regex: /^[а-яА-Яa-zA-Z]+$/, message: "Принимаются только буквы" },
+			telephone: {regex: /^\+7\(\d{3}\)\d{3}-\d{4}$/, message: "Укажите телефон строго по шаблону +7(000)000-0000" },
+			email: {regex: /^my(\.|-|)mail@mail\.ru$/, message: "E-mail должен иметь вид mymail@mail.ru или my.mail@mail.ru или my-mail@mail.ru" },
+			default: {regex: /./, message: "Укажите текст" }
+		};
 
         for (let [name, value] of formData) {
-            switch (name) {
-                case "username":
-                    regexCheck = /^[а-яА-Яa-zA-Z]+$/;
-                    comment = "Укажите только буквы";
-                    break;
-                case "telephone":
-                    regexCheck = /^\+\d{1}\(\d{3}\)\d{3}-\d{4}$/;
-                    comment = "Укажите телефон строго по шаблону +7(000)000-0000";
-                    break;
-                case "email":
-                    regexCheck = /^my(\.|-|)mail@mail\.ru$/;
-                    comment = "E-mail должен иметь вид mymail@mail.ru или my.mail@mail.ru или my-mail@mail.ru";
-                    break;
-               default:
-                    regexCheck = /./;
-                    comment = "Обязательно укажите текст";
-                    break;
-            }
-
-            el = document.querySelector("." + name);
-            if (regexCheck.test(value)) {
+			
+			let el = document.querySelector("." + name);
+			let regex = (data[name]) ? data[name].regex : data.default.regex;
+			let message = (data[name]) ? data[name].message : data.default.message;							            
+			
+            if (regex.test(value)) {
                 el.classList.remove("alert");
-                el.lastChild.innerHTML="";
+                el.lastChild.innerHTML = "";
                 result += name + " : " + value + "\n";
             } else {
                 formValid = false;
                 el.classList.add("alert");
-                el.lastChild.innerHTML=comment;                    
+                el.lastChild.innerHTML = message;                    
             }
-
         }
         
-        // решил сделать через setTimeout, чтобы браузер успевал корректно отобразить стили, 
-        // если ранее при заполнении формы были допущены ошибки, а теперь они исправлены
         if (formValid) setTimeout((result) => alert(result), 250, result);
     }
 
