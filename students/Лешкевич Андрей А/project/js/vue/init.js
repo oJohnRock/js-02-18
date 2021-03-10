@@ -1,5 +1,5 @@
 "use strict";
-const { createStore, mapGetters } = Vuex;
+const { createStore, mapGetters, mapActions } = Vuex;
 const { createApp, ref, onMounted, computed } = Vue;
 const store = createStore({
   state() {
@@ -102,6 +102,18 @@ const store = createStore({
       state.Cart.value = cart;
       state.Cart.isLoaded = true;
     },
+    CartInc(state, index) {
+      state.Cart.value[index].quantity++;
+    },
+    CartDec(state, index) {
+      state.Cart.value[index].quantity--;
+    },
+    CartDel(state, index) {
+      state.Cart.value.splice(index, 1);
+    },
+    CartAdd(state, item) {
+      state.Cart.value.push(item);
+    }
   },
   actions: {
     async GetCatalogChashed(context) {
@@ -140,75 +152,58 @@ const store = createStore({
         throw Error("Cart load error");
       }
     },
+    CartInc(context, item) {
+      return new Promise((resolve, reject) => {
+        let index = context.state.Cart.value.findIndex(obj => { return (obj.id === item.id && obj.type === item.type) });
+        if (index !== -1) {
+            context.commit('CartInc', index);
+          resolve();
+        }else{
+          reject();
+        }
+      })
+    },
+    CartDec(context, item) {
+      return new Promise((resolve, reject) => {
+        let index = context.state.Cart.value.findIndex(obj => { return (obj.id === item.id && obj.type === item.type) });
+        if (index !== -1) {
+          if (1 < context.state.Cart.value[index].quantity) {
+            context.commit('CartDec', index);
+          } else {
+            context.commit('CartDel', index);
+          }
+          resolve();
+        }else{
+          reject();
+        }
+      })
+    },
+    CartDel(context, item) {
+      return new Promise((resolve, reject) => {
+        let index = context.state.Cart.value.findIndex(obj => { return (obj.id === item.id && obj.type === item.type) });
+        if (index !== -1) {
+          context.commit('CartDel', index);
+          resolve();
+        }else{
+          reject();
+        }
+      })
+    },
+    CartAdd(context, item) {
+      return new Promise((resolve, reject) => {
+        context.dispatch('CartInc', item).catch(() => {
+          context.commit('CartAdd', {
+            "id": item.id,
+            "type": item.type,
+            "quantity": 1
+          });
+          resolve();
+        })
+      })
+    }
   },
 });
 const RootComponent = {
-  /*setup() {
-        const state = ref({
-            CatalogChashed: {
-                isLoaded: false,
-                value: []
-            },
-            CatalogDisplayedItems: {
-                isLoaded: false,
-                value: []
-            }
-        });
-        const GetCatalogChashed = async () => {
-            let response = await fetch(urlCatalog);
-            if (!response.ok) {
-                throw Error(response.statusText);
-            }
-            let json = await response.json();
-            if (json.status === 200) {
-                state.value.CatalogChashed.value = json.catalog;
-                state.value.CatalogChashed.isLoaded = true;
-            } else {
-                throw Error('Catalog load error');
-            }
-        }
-        const GetCatalogDisplayedItems = async () => {
-            let response = await fetch(urlCatalogDisplayed);
-            if (!response.ok) {
-                throw Error(response.statusText);
-            }
-            let json = await response.json();
-            if (json.status === 200) {
-                state.value.CatalogDisplayedItems.value = json.displayed;
-                state.value.CatalogDisplayedItems.isLoaded = true;
-            } else {
-                throw Error('Displayed Catalog load error');
-            }
-        }
-        const CatalogDisplayed = computed(() => {
-            if (state.value.CatalogChashed.isLoaded && state.value.CatalogDisplayedItems.isLoaded) {
-                return state.value.CatalogDisplayedItems.value.map(item => {
-                    let elem = state.value.CatalogChashed.value.find(obj => { return obj.id === item.id });
-                    if (elem.type[item.type] !== undefined) {
-                        return {
-                            "id": item.id,
-                            "name": elem.name,
-                            "type": item.type,
-                            "img": elem.type[item.type].img,
-                            "price": elem.type[item.type].price,
-                            "star": elem.type[item.type].star,
-                            "color": elem.type[item.type].color,
-                            "size": elem.type[item.type].size
-                        }
-                    } else return {}
-                })
-            }
-            return [];
-        });
-        onMounted(GetCatalogChashed);
-        onMounted(GetCatalogDisplayedItems);
-        return {
-            state,
-            GetCatalogChashed,
-            GetCatalogDisplayedItems,
-            CatalogDisplayed
-        }
-    },*/
   methods: {
     float2str(int, fract = 2) {
       let arr = int.toString().split(".");
@@ -218,21 +213,63 @@ const RootComponent = {
       arr[1] = arr[1].substring(0, fract).padStart(fract, "0");
       return arr.join(".");
     },
-    startGen(star) {
-      let ret = "";
-      for (let i = 0; i < Math.floor(star); i++) {
-        ret += '<i class="fa fa-star"></i>';
+    CartEventDispatcher(event) {
+      let target = event.path.find(obj => { return (obj.name === 'btn-inc-item' || obj.name === 'btn-remove-item' || obj.name === 'btn-dec-item') });
+      if (target) {
+        let item;
+        if ((item = this.GetCartData(target)) !== null) {
+          if (target.name === 'btn-inc-item') {
+            this.CartInc(item);
+          } else if (target.name === 'btn-remove-item') {
+            this.CartDel(item);
+          } else if (target.name === 'btn-dec-item') {
+            this.CartDec(item);
+          }
+        }
       }
-      if (0 < Math.floor(star * 10 - Math.floor(star) * 10)) {
-        ret += '<i class="fa fa-star-half-o" aria-hidden="true"></i>';
-      }
-      return ret;
     },
+    CatalogEventDispatcher(event) {
+      let target = event.path.find(obj => { return (obj.name === 'btn-add-item') });
+      if (target) {
+        let item;
+        if ((item = this.GetCatalogData(target)) !== null) {
+          if (target.name === 'btn-add-item') {
+            this.CartAdd(item);
+          }
+        }
+      }
+    },
+    GetCartData(_obj) {
+      let item = _obj.closest('[data-cart-item][data-cart-item-t]');
+      if (item) {
+        return { id: parseInt(item.getAttribute('data-cart-item')), type: parseInt(item.getAttribute('data-cart-item-t')) }
+      }
+      return undefined;
+    },
+    GetCatalogData(_obj) {
+      let item = _obj.closest('[data-catalog-item][data-catalog-item-t]');
+      if (item) {
+        return { id: parseInt(item.getAttribute('data-catalog-item')), type: parseInt(item.getAttribute('data-catalog-item-t')) }
+      }
+      return undefined;
+    },
+    CartInc(item) {
+      return this.$store.dispatch('CartInc', item);
+    },
+    CartDec(item) {
+      return this.$store.dispatch('CartDec', item);
+    },
+    CartAdd(item) {
+      return this.$store.dispatch('CartAdd', item);
+    },
+    CartDel(item) {
+      return this.$store.dispatch('CartDel', item);
+    }
   },
   computed: {
-    // смешиваем результат mapGetters с внешним объектом computed
     ...mapGetters([
       "CartCount",
+      "CartDisplayed"
       // ...
     ]),
   },
