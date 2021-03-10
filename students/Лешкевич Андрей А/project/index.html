@@ -45,6 +45,7 @@
             urlCatalogDisplayed = "api/catalog/displayed/get/index.json";
     </script>
     <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vuex@next"></script>
     <script type="text/javascript" src="js/vue/init.js" defer></script>
 </head>
 
@@ -118,38 +119,35 @@
                     <div id="cartSmall" class="btn-cart__wrap">
                         <a href="Shopping%20Cart.html" class="btn-cart"><img src="img/cart_black.png" alt="">
                         </a>
-                        <div class="btn-cart__count">0</div>
+                        <div class="btn-cart__count" v-show="$store.getters.CartCount.count > 0">{{ $store.getters.CartCount.count }}</div>
                         <div class="btn-cart__ddc">
                             <ul class="btn-cart__ddc-list">
-                                <!-- Replaced by JavaScript
-                            <li class="btn-cart__ddc-item">
-                                <div class="col"><a href="#"><img src="img/cart_item_01.png" alt=""></a></div>
-                                <div class="col">
-                                    <p>Rebox Zane</p>
-                                    <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></p>
-                                    <div>
-                                        <p class="price-count">1 <span class="x-txt">x</span> $250</p>
-                                        <p class="sub-total clear-fix"> = $250</p>
+                                <!-- Replaced by JavaScript-->
+                                <li v-for="item in $store.getters.CartDisplayed" v-bind:data-cartsmall-item="item.id" v-bind:data-cartsmall-item-t="item.type" class="btn-cart__ddc-item">
+                                    <div class="col"><a href="#"><img v-bind:src="item.img" alt=""></a></div>
+                                    <div class="col">
+                                        <p>{{ item.name }}</p>
+                                        <p><span v-html="startGen(item.star)"></span></p>
+                                        <div>
+                                            <p class="price-count">{{ item.quantity }} <span class="x-txt">x</span> ${{ float2str(item.price) }}</p>
+                                            <p class="sub-total clear-fix"> = ${{ float2str(item.price * item.quantity) }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col"><a href="#"><i class="fas fa-plus-circle"></i></a><a href="#"><i class="fa fa-times-circle"></i></a><a href="#"><i class="fas fa-minus-circle"></i></a></div>
-                            </li>
-                            <li class="btn-cart__ddc-item">
-                                <div class="col"><a href="#"><img src="img/cart_item_02.png" alt=""></a></div>
-                                <div class="col">
-                                    <p>Rebox Zane</p>
-                                    <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></p>
-                                    <div>
-                                        <p class="price-count">1 <span class="x-txt">x</span> $250</p>
-                                        <p class="sub-total clear-fix"> = $250</p>
+                                    <div class="col">
+                                        <a v-bind:href="'cart/incItem/' + item.id + '/' + item.type" name="btn-inc-item">
+                                            <i class="fas fa-plus-circle"></i>
+                                        </a>
+                                        <a v-bind:href="'cart/removeItem/' + item.id + '/' + item.type" name="btn-remove-item">
+                                            <i class="fa fa-times-circle"></i>
+                                        </a>
+                                        <a v-bind:href="'cart/decItem/' + item.id + '/' + item.type" name="btn-dec-item">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </a>
                                     </div>
-                                </div>
-                                <div class="col"><a href="#"><i class="fas fa-plus-circle"></i></a><a href="#"><i class="fa fa-times-circle"></i></a><a href="#"><i class="fas fa-minus-circle"></i></a></div>
-                            </li>
-                            -->
+                                </li>
                             </ul>
                             <div class="btn-cart__ddc-total">
-                                <div class="total-grand"><span>TOTAL</span><span class="total-grand-summ">$0.00</span>
+                                <div class="total-grand"><span>TOTAL</span><span class="total-grand-summ">${{ $store.getters.CartCount.grand_total }}</span>
                                 </div>
                                 <div class="btn-sqr_bw"><a href="Checkout.html" class="btn-sqr_bw__link"><span
                                             class="btn-sqr_bw__text">Checkout</span></a>
@@ -378,7 +376,7 @@
                         <p>Shop for items based on what we featured in this week</p>
                     </div>
                     <ul id="catalog" class="products-grid_list">
-                        <li v-for="item in CatalogDisplayed" v-bind:data-catalog-item="item.id" v-bind:data-catalog-item-t="item.type" class="products-grid_item">
+                        <li v-for="item in $store.getters.CatalogDisplayed" v-bind:data-catalog-item="item.id" v-bind:data-catalog-item-t="item.type" class="products-grid_item">
                             <div class="top-block">
                                 <!--<img v-bind:src="item.img" alt="">-->
                                 <div class="visible progressive replace" v-bind:data-href="item.img">
