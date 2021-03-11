@@ -1,6 +1,48 @@
 "use strict";
 const { createStore, mapGetters } = Vuex;
 const { createApp, ref, onMounted, computed } = Vue;
+function getURLs() {
+  const regex = /(?<=\/)([^\/]*)(\.ht\w+)$/gm;
+  let m,
+    url = {
+      Cart: "api/cart/get/index.json",
+      CatalogCashed: "api/catalog/elements/get/all.json",
+      CatalogDisplayed: "api/catalog/displayed/get/index.json",
+    };
+  if ((m = regex.exec(window.location.href)) !== null) {
+    switch (m[1]) {
+      case "":
+      case "index":
+        url.Cart = "api/cart/get/index.json";
+        url.CatalogCashed = "api/catalog/elements/get/all.json";
+        url.CatalogDisplayed = "api/catalog/displayed/get/index.json";
+        break;
+      case "Checkout":
+        url.Cart = "api/cart/get/checkout.json";
+        url.CatalogCashed = "api/catalog/elements/get/all.json";
+        url.CatalogDisplayed = "api/catalog/displayed/get/checkout.json";
+        break;
+      case "Product":
+        url.Cart = "api/cart/get/Product.json";
+        url.CatalogCashed = "api/catalog/elements/get/Product.json";
+        url.CatalogDisplayed = "api/catalog/displayed/get/Product.json";
+        break;
+      case "Shopping Cart":
+        case "Shopping%20Cart":
+        url.Cart = "api/cart/get/Shopping Cart.jso";
+        url.CatalogCashed = "api/catalog/elements/get/Shopping Cart.jso";
+        url.CatalogDisplayed = "api/catalog/displayed/get/Shopping Cart.jso";
+        break;
+      case "Single Page":
+        case "Single%20Page":
+        url.Cart = "api/cart/get/Single Page.json";
+        url.CatalogCashed = "api/catalog/elements/get/Single Page.json";
+        url.CatalogDisplayed = "api/catalog/displayed/get/Single Page.json";
+        break;
+    }
+  }
+  return url;
+}
 const store = createStore({
   state() {
     return {
@@ -105,7 +147,7 @@ const store = createStore({
   },
   actions: {
     async GetCatalogChashed(context) {
-      let response = await fetch(urlCatalog);
+      let response = await fetch(getURLs().CatalogCashed);
       if (!response.ok) {
         throw Error(response.statusText);
       }
@@ -117,7 +159,7 @@ const store = createStore({
       }
     },
     async GetCatalogDisplayedItems(context) {
-      let response = await fetch(urlCatalogDisplayed);
+      let response = await fetch(getURLs().CatalogDisplayed);
       if (!response.ok) {
         throw Error(response.statusText);
       }
@@ -129,7 +171,7 @@ const store = createStore({
       }
     },
     async GetCart(context) {
-      let response = await fetch(urlCart);
+      let response = await fetch(getURLs().Cart);
       if (!response.ok) {
         throw Error(response.statusText);
       }
@@ -243,3 +285,4 @@ store.dispatch("GetCatalogChashed");
 store.dispatch("GetCatalogDisplayedItems");
 store.dispatch("GetCart");
 const vm = app.mount("#app-brand-shop");
+getURLs();
