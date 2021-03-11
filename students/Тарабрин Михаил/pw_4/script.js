@@ -9,17 +9,14 @@ let received = document.querySelector('.button')
 
 btn1.addEventListener('click', (event) => {
     text.innerHTML = example.replace(regExToAllTxt, '"')
-    console.log(event)
 });
 
 btn2.addEventListener('click', (event) => {
     text.innerHTML = example.replace(regExToSpecTxt, '"')
-    console.log(event)
 });
 
 reset.addEventListener('click', (event) => {
     text.innerHTML = example
-    console.log(event)
 });
 
 received.addEventListener('click', (event) => {
@@ -30,12 +27,10 @@ received.addEventListener('click', (event) => {
     phone: document.testForm.phone.value,
     textArea: document.testForm.letter.value,
         };
+    
     let correctMail = /^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2})$/;
     let correctPhone = /^\+7\(\d{3}\)\d{3}\-\d{4}$/;
-    console.log(arr.name);
-    console.log(arr.mail);
-    console.log(arr.phone);
-    console.log(arr.textArea.length);
+    
     if (arr.name.length == 0) {
         document.testForm.name.style = 'border: 2px solid red; color: red'
         document.testForm.name.value = 'fill that field'
@@ -48,7 +43,5 @@ received.addEventListener('click', (event) => {
     } else if (!(correctPhone.test(arr.phone))){
         document.testForm.phone.style = 'border: 2px solid red; color: red'
         document.testForm.phone.value += ' incorrect phone number' 
-    }
-    console.log(correctPhone.test(arr.phone))
-
+    };
 })
