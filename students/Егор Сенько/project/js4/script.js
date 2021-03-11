@@ -4,7 +4,7 @@ let newStr = str.replace(regexp, "\"");
 
 console.log(newStr);
 
-let name = "Sefiroth";
+let username = "Sefiroth";
 let phone = "+79067615750";
 let email = "vladimir.asd-132@asd.ru";
 let text = "Как-то так, или иначе";
@@ -22,4 +22,4 @@ let validation = (name, phone, email, text) => {
     return console.log('Введено корректно');
 }
 
-validation(name, phone, email, text);
+validation(userame, phone, email, text);
