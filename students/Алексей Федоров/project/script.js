@@ -25,6 +25,7 @@ const request = (path = '', method = 'GET', body) => {
     })
 }
 
+{
 class GoodsItem {   // товар
     constructor(item){
         this.item = item;
@@ -258,13 +259,113 @@ class GoodsBasket {   // товар для корзины
 
 }
 
-const basket = new Basket();
-const list = new GoodsList(basket);
+//const basket = new Basket();
+//const list = new GoodsList(basket);
 
-list.fetchData()
-    .then(() => {
-        list.render();
+//list.fetchData()
+//    .then(() => {
+//        list.render();
+//    });
+}
+
+    new Vue({
+        el: '#app',
+        data: {
+            goods: [],
+            searchValue: '',
+            basketGoods: [],
+            basketOpen: false,
+        },
+        created() {
+            this.fetchGoods();
+            this.fetchBasket();
+        },
+        computed: {
+            filteredGoods() {
+                const regexp = new RegExp(this.searchValue, 'i');
+                return this.goods.filter((goodsItem) => 
+                    regexp.test(goodsItem.product_name)
+                );
+            },
+            total() {
+                return this.basketGoods.reduce(
+                    (accumulator, currentElement) => (accumulator + (currentElement.price*currentElement.quantity ))
+                ,0);
+            },
+            quantity() {
+                return this.basketGoods.reduce(
+                    (accumulator, currentElement) => (accumulator + (currentElement.quantity ))
+                ,0);
+            },
+
+        },
+        methods: {
+            async fetchGoods() {
+                try {
+                    const res = await fetch(`${API_ROOT}/catalogData.json`);
+                    const goods = await res.json();
+                    this.goods = goods;
+                } catch (err) {
+                    console.log(`Can't fetch data`, error);
+                    throw new Error(error);
+                }
+            },
+            fetchBasket() {
+                request('getBasket.json')
+                    .then((goods) => {
+                        this.basketGoods = goods.contents;
+                        console.log('basket', this.basketGoods);
+                    })
+                    .catch((error) => {
+                        console.log(`Can't fetch basket data`, error);
+                    });
+            },
+            addItem(item) {
+                request('addToBasket.json')
+                    .then((response) => {
+                        if (response.result !== 0) {
+                            const itemIndex = this.basketGoods.findIndex((goodsItem) => goodsItem.id_product === item.id_product);
+                            if (itemIndex > -1) {
+                                this.basketGoods[itemIndex].quantity += 1;
+                            } else {
+                                this.basketGoods.push({ ...item, quantity: 1 });
+                            }
+                            console.log(this.basketGoods);
+                        } else {
+                            console.error(`Can't add item to basket`, item, this.basketGoods);
+                        }
+                    })
+            },
+            removeItem(id) {
+                request('deleteFromBasket.json')
+                    .then((response) => {
+                        if (response.result !== 0) {
+                            console.log(id);
+                            this.basketGoods = this.basketGoods.filter((goodsItem) => goodsItem.id_product !== parseInt(id.id_product));
+                            console.log(this.basketGoods);
+                        } else {
+                            console.error(`Can't remove item from basket`, item, this.basketGoods);
+                        }
+                    });
+            },
+            filterGoods() {
+                console.log('goSearchValue', this.searchValue)
+                this.searchValue = document.querySelector('.search').value; 
+                //filteredGoods();
+                console.log('goSearchValue', this.searchValue)
+            },
+            basketGoodsOpen() {
+                this.basketOpen = ! this.basketOpen
+            },
+            inputQuantityClik(e, item){
+                console.log(e.target.value );
+                if (e.target.value > 0) {
+                    item.quantity = +e.target.value}
+                else {
+                    this.removeItem(item)
+                }
+            }
+
+
+        },
     });
-
-
-
