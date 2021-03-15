@@ -14,16 +14,23 @@
         <header>
             <span class="logo">eShop</span>
             <input type="text" class="search" v-model="searchValue" />
-            <button class="cart-button">Корзина</button>
+            <button class="basket-button" v-on:click="isBasketVisible = !isBasketVisible">Корзина</button>
+            <div v-if="isBasketVisible" class="basket">
+                <div class="basket-item" v-for="item in basketGoods">
+                    <h4>{{ item.product_name }}</h4>
+                    <p>{{ item.price }} x {{ item.quantity }}</p>
+                    <button v-on:click="removeItem(item.id_product)">
+                        Удалить
+                    </button>
+                </div>
+                <p class="basket-total">Общая стоимость: <b>{{ total }}</b></p>
+            </div>
         </header>
         <main>
-            <section class="goods">
-                <div class="item" v-for="item in filteredGoods">
-                    <h2>{{ item.product_name }}</h2>
-                    <p>{{ item.price }}</p>
-                    <button name="add-to-basket" v-on:click.prevent="addItem(item)">Add to basket</button>
-                </div>
-            </section>
+            <goods-list
+                v-bind:filtered-goods="filteredGoods"
+                v-on:add-item="addItem"
+            />
         </main>
     </div>
 </body>
