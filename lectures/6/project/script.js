@@ -21,56 +21,12 @@ const request = (path = '', method = 'GET', body) => {
     });
 }
 
-Vue.component('goods-list', {
-    props: ['filteredGoods'],
-    template: `
-        <section class="goods">
-            <goods-item
-                v-for="item in filteredGoods"
-                v-bind:item="item"
-                v-on:add="$emit('add-item', $event)"
-            />
-            <goods-empty v-if="filteredGoods.length === 0" />
-        </section>
-    `,
-    // methods: {
-    //     handleAddItem(item) {
-    //         this.$emit('add-item', item);
-    //     }
-    // }
-});
-
-Vue.component('goods-item', {
-    props: ['item'],
-    template: `
-        <div class="item">
-            <h2>{{ item.product_name }}</h2>
-            <p>{{ item.price }}</p>
-            <button name="add-to-basket" v-on:click.prevent="$emit('add', item)">Add to basket</button>
-        </div>
-    `,
-    // methods: {
-    //     handleAdd() {
-    //         this.$emit('add', this.item);
-    //     }
-    // }
-});
-
-Vue.component('goods-empty', {
-    template: `
-        <div class="goods--empty">
-            Нет товаров
-        </div>
-    `,
-});
-
 new Vue({
     el: '#app',
     data: {
         goods: [],
         searchValue: '',
         basketGoods: [],
-        isBasketVisible: false,
     },
     created() {
         this.fetchGoods();
@@ -84,9 +40,8 @@ new Vue({
             );
         },
         total() {
-            return this.basketGoods.reduce(
-                (accumulator, currentElement) => 
-                    accumulator + (currentElement.price * currentElement.quantity),
+            return this.goods.reduce(
+                (accumulator, currentElement) => accumulator + currentElement.price,
                 0
             );
         }

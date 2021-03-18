@@ -6,38 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eShop</title>
     <link rel="stylesheet" href="style.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js" defer></script>
 </head>
 <body>
+    <div id="app">
+        <header>
+            <div class="wrap wrap_header">
+                <div class="basket-blok">
+                    <div class="basket"  v-if="basketOpen">
+                        <div class="basket-item" v-for="item, index in basketGoods">
+                            <h3> {{ index + 1 }}. {{ item.product_name }}</h3>
+                            <p> {{ item.price }}$</p>
+                            <input class="basket-quantity" type="number" required min="0" max="100" 
+                                v-on:click.prevent ="(e) => inputQuantityClik(e, item)" v-bind:value="item.quantity"
+                                >
+                            <button class="basket-button" type="button"  v-on:click.prevent="removeItem(item)">x</button>
+                        </div>
+                        <p class="basket-totall" v-if="quantity !== 0">
+                            В корзине {{ quantity }} шт. на сумму {{ total }}$ 
+                        </p>
+                        <p class="basket-totall" v-else>
+                            Корзина пуста. 
+                        </p>
 
-    <header>
-        <div class="wrap wrap_header">
-            <div class="basket-blok">
-                <div class="basket"></div>
-                <div class="basket"><p id="basket-totall"></p></div>
+                    </div>
+                    <div class="basket">
+                        
+                    </div>
+                </div>
+                
+                <div class="cart-button-block">
+                    <button class="cart-button" type="button" v-on:click.prevent="basketGoodsOpen">Корзина</button>
+                    <div class="cart-button-counter"><p id="basket_count"> {{ quantity }} </p></div>
+                </div>
             </div>
-            
-            <div class="cart-button-block">
-                <button class="cart-button" type="button" onclick="basket.buttonClik()">Корзина</button>
-                <div class="cart-button-counter"><p id="basket_count">0</p></div>
-            </div>
-        </div>
-    </header>
-    <main>
+        </header>
+        <main>
 
-        <div class="wrap wrap_catalog">
-            <input type="text" class="search" />
-            <div class="goods-list"></div>
-        </div>
-    </main>
-<!--
-    <div>
-        <p>нажмите чтобы рассчитать стоимость и калорийность гамбургера</p>
-        <button class="cart-button" type="button" onclick="fastFood()">Фастфуд</button>
+            <div class="wrap wrap_catalog">
+                <div class="search-blok">
+                    <input type="text" class="search" v-bind:value="searchValue"/>
+                    <button class="search-button"  v-on:click.prevent="filterGoods">Искать</button>
+                </div>
+                <div class="goods-list" v-if="filteredGoods.length">
+                    <div class="goods-item" v-for="item in filteredGoods">
+                            <h3>{{ item.product_name }}</h3>
+                            <p>{{ item.price }}</p>
+                            <button class="product-button" name="add-to-basket" v-on:click.prevent="addItem(item)">Добавить</button>
+                    </div>
+                   
+                </div>
+                <p class="goods-list-no" v-else>Нет данных.</p>
+            </div>
+        </main>
     </div>
--->  
-    <script src="script.js"></script>
-    <script src="fastscript.js"></script>
+
+    <script src="script.js" defer></script>
+   
     
     
 </body>
